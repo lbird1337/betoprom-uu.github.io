@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V23 - Enhanced Mobile Compatibility) */
+/* css/style.css - Modern Redesign (IMPROVED V26 - Portfolio Details Styling Refined) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -663,12 +663,21 @@ section {
   box-shadow: var(--shadow-sm); /* More subtle shadow */
   transition: transform var(--transition-duration) var(--transition-timing),
               box-shadow var(--transition-duration) var(--transition-timing);
-  background-color: var(--color-secondary); /* Uses Light Grey */
+  background-color: var(--color-surface); /* Changed background to surface */
+  border: var(--border-width) solid var(--color-border); /* Added border */
+  display: flex; /* Use flexbox for internal layout */
+  flex-direction: column; /* Stack children vertically */
+  cursor: pointer; /* Indicate clickable */
 }
 
 .portfolio-item:hover {
   transform: translateY(-3px); /* Subtle lift */
   box-shadow: var(--shadow-md); /* Slightly larger shadow on hover */
+}
+
+.portfolio-preview {
+    position: relative;
+    overflow: hidden;
 }
 
 .portfolio-item img {
@@ -683,25 +692,54 @@ section {
 }
 
 .portfolio-item h4 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: var(--space-sm);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-  color: #fff;
+  /* Adjusted positioning and styling for better appearance */
+  position: relative; /* Changed from absolute */
+  padding: var(--space-sm); /* Padding around the title */
+  background-color: var(--color-surface); /* White background for title */
+  color: var(--color-text); /* Dark text for title */
   font-family: var(--font-heading);
-  text-align: center;
+  text-align: left; /* Align title left */
   letter-spacing: -0.02em;
   font-weight: 600;
   font-size: 1.1rem;
   margin: 0;
-  transition: opacity var(--transition-duration) var(--transition-timing);
-  opacity: 0;
+  /* Removed opacity transition - title is always visible now */
+  /* Removed gradient background */
+  border-bottom: var(--border-width) solid var(--color-border); /* Subtle border below title */
 }
 
+/* Removed hover opacity for h4 as it's always visible */
 .portfolio-item:hover h4 {
-  opacity: 1;
+    opacity: 1; /* Ensure opacity is 1 on hover (though it's always 1 now) */
+}
+
+
+.portfolio-details {
+    padding: var(--space-md); /* Padding for the details section */
+    color: var(--color-text-alt); /* Lighter text color */
+    line-height: var(--line-height-base);
+    overflow: hidden; /* Hide overflow */
+    max-height: 0; /* Collapse by default */
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Smooth transition */
+    padding-top: 0; /* Start with no top padding */
+}
+
+.portfolio-item.is-expanded .portfolio-details {
+    max-height: 1000px; /* Sufficient height to show content (adjust if needed) */
+    padding-top: var(--space-md); /* Add top padding when expanded */
+}
+
+.portfolio-details p {
+    margin-bottom: var(--space-sm); /* Space between paragraphs */
+}
+
+.portfolio-details p:last-child {
+    margin-bottom: 0; /* No bottom margin on the last paragraph */
+}
+
+.portfolio-details a {
+    font-weight: 500; /* Slightly less bold for links in details */
+    color: var(--color-accent); /* Ensure links are accent color */
 }
 
 
@@ -890,13 +928,13 @@ section {
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
   :root {
-    --space-md: calc(var(--space-unit) * 2); /* Adjusted spacing */
-    --space-lg: calc(var(--space-unit) * 4); /* Adjusted spacing */
-    --space-xl: calc(var(--space-unit) * 6); /* Adjusted spacing */
+    --space-md: calc(var(--space-unit) * 4); /* Increased spacing for mobile sections */
+    --space-lg: calc(var(--space-unit) * 6); /* Increased spacing for mobile sections */
+    --space-xl: calc(var(--space-unit) * 8); /* Increased spacing for mobile sections */
   }
 
   body {
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Slightly larger base font size for mobile */
   }
 
   .site-header {
@@ -942,8 +980,8 @@ section {
   }
 
   .nav-menu a {
-    font-size: 0.95rem;
-    padding: var(--space-sm) 0;
+    font-size: 1rem; /* Slightly larger font size for mobile links */
+    padding: var(--space-sm) 0; /* Increased padding for touch targets */
     text-align: center;
     border-bottom: var(--border-width) solid var(--color-border);
     color: var(--color-text); /* Use default text color for mobile links */
@@ -975,8 +1013,8 @@ section {
 
 
   .hero {
-    min-height: 400px; /* Adjusted min-height */
-    padding-top: 60px; /* Adjusted for smaller header */
+    min-height: 60vh; /* Adjusted min-height for mobile hero */
+    padding-top: 80px; /* Adjusted for smaller header */
     padding-bottom: var(--space-md);
   }
 
@@ -985,37 +1023,83 @@ section {
   }
 
   .hero-content h1 {
-    font-size: clamp(2.2rem, 7vw, 3rem); /* Adjusted font size */
+    font-size: clamp(2rem, 7vw, 3rem); /* Adjusted font size */
+    margin-bottom: var(--space-sm); /* Reduced margin */
   }
 
   .hero-content p {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Adjusted font size */
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Adjusted font size */
     margin-bottom: var(--space-lg);
   }
+
+  .hero-content .btn-primary {
+      margin-top: var(--space-md); /* Adjusted button margin */
+  }
+
 
   .section-title {
     font-size: clamp(2rem, 6vw, 2.5rem); /* Adjusted font size */
     margin-bottom: var(--space-md);
   }
 
+  section {
+      padding-block: var(--space-lg); /* Adjusted section padding */
+  }
+
   .advantages-list,
   .services-grid,
   .portfolio-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-sm);
+    gap: var(--space-md); /* Increased gap for vertical stacking */
   }
 
+  .advantages-list li,
+  .service-item,
+  .testimonial {
+      padding: var(--space-md); /* Consistent padding for mobile items */
+  }
+
+  /* Portfolio item specific mobile adjustments */
+  .portfolio-item {
+      padding: 0; /* Remove padding from the main item */
+  }
+
+  .portfolio-preview {
+      padding: var(--space-md); /* Add padding back to the preview */
+      padding-bottom: var(--space-sm); /* Reduce bottom padding */
+  }
+
+  .portfolio-details {
+      padding: var(--space-md); /* Ensure padding for details */
+      padding-top: 0; /* Remove top padding initially */
+  }
+
+  .portfolio-item.is-expanded .portfolio-details {
+      padding-top: var(--space-md); /* Add top padding when expanded */
+  }
+
+
   .testimonials-carousel {
-    scroll-padding-inline: var(--space-xs);
+    scroll-padding-inline: var(--space-md); /* Increased scroll padding */
+    gap: var(--space-md); /* Increased gap */
   }
   .testimonial {
-    flex-basis: 95%;
+    flex-basis: 90%; /* Adjusted width for testimonials */
   }
 
   .contact {
-    padding-block: var(--space-md);
-    margin-block: var(--space-md);
+    padding-block: var(--space-lg); /* Adjusted padding */
+    margin-block: var(--space-lg); /* Adjusted margin */
   }
+
+  .contact p {
+      margin-bottom: var(--space-sm); /* Reduced margin for paragraphs */
+  }
+
+  .contact .btn {
+      margin-top: var(--space-md); /* Adjusted button margin */
+  }
+
 
   .site-footer {
     padding: var(--space-md) var(--space-sm);
