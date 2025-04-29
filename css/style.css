@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V30 - Enhanced Mobile Styles) */
+/* css/style.css - Modern Redesign (IMPROVED V31 - Mobile Menu & Cursor Fixes) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -125,6 +125,8 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-duration) var(--transition-timing);
+  /* Keep default cursor for standard links */
+  cursor: auto; /* Or default */
 }
 
 a:hover {
@@ -227,6 +229,7 @@ ol, ul {
   flex-shrink: 0; /* Prevent logo from shrinking */
   position: relative; /* Needed for the accent pseudo-element */
   display: inline-block; /* Allow pseudo-element positioning */
+  cursor: auto; /* Keep default cursor for logo */
 }
 
 /* Subtle blue accent line below the logo text */
@@ -276,6 +279,7 @@ ol, ul {
   transition: color var(--transition-duration) var(--transition-timing); /* Only transition color */
   color: var(--color-header-text); /* Dark link color */
   border-bottom: none; /* Ensure no border-bottom */
+  cursor: auto; /* Keep default cursor for nav links */
 }
 
 /* Subtle underline animation on hover */
@@ -328,7 +332,7 @@ ol, ul {
     transition: background-color var(--transition-duration) var(--transition-timing),
                 box-shadow var(--transition-duration) var(--transition-timing),
                 color var(--transition-duration) var(--transition-timing); /* Added color transition */
-    cursor: default;
+    /* Removed cursor: pointer; */
     border: none;
     text-decoration: none; /* Ensure no underline */
     box-shadow: var(--shadow-sm); /* Subtle shadow */
@@ -356,6 +360,7 @@ ol, ul {
     color: var(--color-text); /* Dark text color */
     text-decoration: none;
     transition: color var(--transition-duration) var(--transition-timing);
+    cursor: auto; /* Keep default cursor */
 }
 
 .btn-secondary-link:hover {
@@ -365,10 +370,10 @@ ol, ul {
 
 /* Mobile Navigation Toggle */
 .nav-toggle {
-  display: none;
+  display: none; /* Hidden by default */
   background: none;
   border: none;
-  cursor: default;
+  cursor: pointer; /* Keep pointer cursor for the hamburger button */
   padding: var(--space-xs);
   z-index: 101;
 }
@@ -517,7 +522,7 @@ ol, ul {
   transition: background-color var(--transition-duration) var(--transition-timing),
               transform var(--transition-duration) var(--transition-timing),
               box-shadow var(--transition-duration) var(--transition-timing);
-  cursor: default;
+  /* Removed cursor: pointer; */
   border: none;
   font-size: 0.95rem;
   line-height: 1.2;
@@ -671,7 +676,7 @@ section {
               box-shadow var(--transition-duration) var(--transition-timing);
   background-color: var(--color-surface); /* Changed background to surface */
   border: var(--border-width) solid var(--color-border); /* Added border */
-  cursor: default; /* Indicate clickable */
+  /* Removed cursor: pointer; */
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack image and title */
 }
@@ -860,7 +865,7 @@ section {
    17. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-/* Medium devices (tablets, less than 992px) */
+/* Medium devices (tables, less than 992px) */
 @media (max-width: 991.98px) {
   :root {
     --space-lg: calc(var(--space-unit) * 5); /* Adjusted spacing */
@@ -906,12 +911,12 @@ section {
   }
 
   .nav-toggle {
-    display: block;
+    display: block; /* Show hamburger on small screens */
   }
 
   /* Hide nav group on mobile and show hamburger */
   .nav-group {
-      display: none;
+      display: none; /* Hidden by default */
   }
 
 
@@ -934,7 +939,7 @@ section {
   }
 
   .nav-menu.is-open {
-    display: flex;
+    display: flex; /* Show menu when is-open class is present */
     max-height: 500px; /* Adjust as needed */
     padding: var(--space-md);
   }
@@ -1340,7 +1345,7 @@ section {
   color: var(--color-text-alt); /* Lighter color for close button */
   font-size: 2rem; /* Larger size */
   font-weight: bold;
-  cursor: default;
+  /* Removed cursor: pointer; */
   transition: color var(--transition-duration) var(--transition-timing);
   z-index: 210; /* Ensure it's above modal content */
   background: none; /* Remove default button background */
@@ -1365,7 +1370,7 @@ section {
   border: none;
   padding: var(--space-sm);
   font-size: 2rem;
-  cursor: default;
+  /* Removed cursor: pointer; */
   border-radius: var(--radius-sm);
   transition: background-color 0.3s ease;
   z-index: 205; /* Ensure they are above the image but below the close button */
@@ -1421,7 +1426,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: var(--space-sm);
-  cursor: default;
+  /* Removed cursor: pointer; */
   animation: fadeIn 0.3s ease-out;
 }
 

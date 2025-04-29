@@ -1,16 +1,27 @@
-// js/main.js - Main JavaScript File (Updated with Gallery Modal Navigation)
+// js/main.js - Main JavaScript File (Enhanced Mobile Features)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Navigation Toggle ---
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu'); // Still targets the ul element
+  const navGroup = document.querySelector('.nav-group'); // Select the nav-group wrapper
 
-  if (navToggle && navMenu) {
+  if (navToggle && navMenu && navGroup) {
     navToggle.addEventListener('click', () => {
       // Toggle the 'is-active' class on the button for hamburger animation
       navToggle.classList.toggle('is-active');
-      // Toggle the 'is-open' class on the menu for showing/hiding
-      navMenu.classList.toggle('is-open');
+
+      // Toggle the 'is-open' class on the nav-menu for showing/hiding
+      // On mobile, we want to show/hide the nav-menu directly
+      // On larger screens, the nav-menu is always visible (controlled by CSS)
+      if (window.innerWidth <= 767.98) { // Check if we are on a mobile screen size
+           navMenu.classList.toggle('is-open');
+           // Also toggle display on the nav-group for mobile
+           // Using style.display directly here to override potential CSS on small screens
+           navGroup.style.display = navMenu.classList.contains('is-open') ? 'flex' : 'none';
+      }
+
+
       // Optional: Prevent body scrolling when menu is open
       document.body.classList.toggle('nav-open');
       // Update aria-expanded attribute for accessibility
@@ -25,11 +36,40 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close the menu for all links inside the nav-menu
         navToggle.classList.remove('is-active');
         navMenu.classList.remove('is-open');
+        // Hide the nav-group again on mobile after clicking a link
+        if (window.innerWidth <= 767.98) {
+             navGroup.style.display = 'none';
+        }
         document.body.classList.remove('nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Handle window resize to ensure correct menu state
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 767.98) {
+            // If resized to larger than mobile, ensure menu is visible and classes are removed
+            navMenu.classList.remove('is-open');
+            navToggle.classList.remove('is-active');
+            document.body.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            // Ensure nav-group is displayed on larger screens
+            navGroup.style.display = 'flex';
+        } else {
+             // If resized to mobile, ensure nav-group display matches nav-menu state
+             navGroup.style.display = navMenu.classList.contains('is-open') ? 'flex' : 'none';
+        }
+    });
+
+     // Set initial state on load based on window width
+     if (window.innerWidth <= 767.98) {
+         navGroup.style.display = 'none'; // Hide nav-group initially on mobile
+     } else {
+         navGroup.style.display = 'flex'; // Show nav-group initially on larger screens
+     }
+
   }
+
 
   // --- Scroll Reveal Animation ---
   // Check if IntersectionObserver is supported
@@ -95,9 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
        // Close mobile menu after clicking a link (if it's open)
+       // Check if navToggle and navMenu exist before accessing their properties
        if (navToggle && navMenu && navMenu.classList.contains('is-open')) {
             navToggle.classList.remove('is-active');
             navMenu.classList.remove('is-open');
+            // Hide the nav-group again on mobile after clicking a link
+            if (window.innerWidth <= 767.98) {
+                 navGroup.style.display = 'none';
+            }
             document.body.classList.remove('nav-open');
             navToggle.setAttribute('aria-expanded', 'false');
        }
@@ -113,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevButton = document.querySelector('.prev-button');
   const nextButton = document.querySelector('.next-button');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const modalImageContainer = document.querySelector('.modal-image-container'); // Get the image container
 
   let currentItemIndex = 0; // To keep track of the currently displayed item
 
@@ -158,7 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Add click listener to the close button
-  closeButton.addEventListener('click', closeModal);
+  if (closeButton) { // Check if closeButton exists
+      closeButton.addEventListener('click', closeModal);
+  }
+
 
   // Add click listeners for navigation buttons
   if (prevButton && nextButton) {
@@ -173,6 +222,45 @@ document.addEventListener('DOMContentLoaded', () => {
           const nextIndex = (currentItemIndex + 1) % portfolioItems.length;
           updateModalContent(nextIndex);
       });
+  }
+
+  // --- Touch Swipe Navigation for Modal Image ---
+  if (modalImageContainer && prevButton && nextButton) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const swipeThreshold = 50; // Minimum distance in pixels for a swipe
+
+      modalImageContainer.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+      }, false);
+
+      modalImageContainer.addEventListener('touchmove', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+      }, false);
+
+      modalImageContainer.addEventListener('touchend', (e) => {
+          // If touchEndX is 0, it means touchmove didn't fire (e.g., a tap)
+          if (touchEndX === 0) {
+              // Handle as a tap if needed, or just ignore
+          } else {
+              handleSwipe();
+          }
+          // Reset touch positions
+          touchStartX = 0;
+          touchEndX = 0;
+      }, false);
+
+      function handleSwipe() {
+          const swipeDistance = touchEndX - touchStartX;
+
+          if (swipeDistance > swipeThreshold) {
+              // Swipe right (go to previous)
+              prevButton.click(); // Simulate click on previous button
+          } else if (swipeDistance < -swipeThreshold) {
+              // Swipe left (go to next)
+              nextButton.click(); // Simulate click on next button
+          }
+      }
   }
 
 
@@ -195,12 +283,50 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (event) => {
       if (modal.classList.contains('is-open')) {
           if (event.key === 'ArrowLeft') {
-              prevButton.click(); // Simulate click on previous button
+              // Check if prevButton exists before simulating click
+              if (prevButton) prevButton.click();
           } else if (event.key === 'ArrowRight') {
-              nextButton.click(); // Simulate click on next button
+              // Check if nextButton exists before simulating click
+              if (nextButton) nextButton.click();
           }
       }
   });
+
+
+  // --- Image Lazy Loading ---
+  // Select all images with the 'lazy-img' class
+  const lazyImages = document.querySelectorAll('img.lazy-img');
+
+  // Check if IntersectionObserver is supported for lazy loading
+  if ('IntersectionObserver' in window) {
+      const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const lazyImage = entry.target;
+                  // Load the image from the data-src attribute
+                  lazyImage.src = lazyImage.dataset.src;
+                  // Optional: Add a class when loaded for styling purposes
+                  lazyImage.classList.remove('lazy-img');
+                  lazyImage.classList.add('loaded');
+                  // Stop observing the image
+                  observer.unobserve(lazyImage);
+              }
+          });
+      });
+
+      // Observe each lazy image
+      lazyImages.forEach(lazyImage => {
+          lazyImageObserver.observe(lazyImage);
+      });
+  } else {
+      // Fallback for browsers that do not support IntersectionObserver
+      // Load all lazy images immediately
+      lazyImages.forEach(lazyImage => {
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove('lazy-img');
+          lazyImage.classList.add('loaded');
+      });
+  }
 
 
   // --- Header Scroll Effect (Optional - if you want the header to change on scroll) ---
