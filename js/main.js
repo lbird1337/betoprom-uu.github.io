@@ -1,4 +1,4 @@
-// js/main.js - Main JavaScript File (Updated)
+// js/main.js - Main JavaScript File (Updated with Portfolio Click)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Navigation Toggle ---
@@ -103,6 +103,25 @@ document.addEventListener('DOMContentLoaded', () => {
        }
     });
   });
+
+  // --- Portfolio Item Click to Expand/Collapse Details ---
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  portfolioItems.forEach(item => {
+    // Add click listener to the entire portfolio item
+    item.addEventListener('click', () => {
+      // Toggle the 'is-expanded' class on the clicked item
+      item.classList.toggle('is-expanded');
+
+      // Optional: Close other expanded items when one is clicked
+      portfolioItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('is-expanded')) {
+          otherItem.classList.remove('is-expanded');
+        }
+      });
+    });
+  });
+
 
   // --- Header Scroll Effect (Optional - if you want the header to change on scroll) ---
   // Uncomment and modify if you have a .scrolled class in your CSS
