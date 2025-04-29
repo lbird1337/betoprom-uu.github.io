@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V29 - Gallery and Modal Styling with Navigation) */
+/* css/style.css - Modern Redesign (IMPROVED V30 - Enhanced Mobile Styles) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -328,7 +328,7 @@ ol, ul {
     transition: background-color var(--transition-duration) var(--transition-timing),
                 box-shadow var(--transition-duration) var(--transition-timing),
                 color var(--transition-duration) var(--transition-timing); /* Added color transition */
-    cursor: pointer;
+    cursor: default;
     border: none;
     text-decoration: none; /* Ensure no underline */
     box-shadow: var(--shadow-sm); /* Subtle shadow */
@@ -368,7 +368,7 @@ ol, ul {
   display: none;
   background: none;
   border: none;
-  cursor: pointer;
+  cursor: default;
   padding: var(--space-xs);
   z-index: 101;
 }
@@ -517,7 +517,7 @@ ol, ul {
   transition: background-color var(--transition-duration) var(--transition-timing),
               transform var(--transition-duration) var(--transition-timing),
               box-shadow var(--transition-duration) var(--transition-timing);
-  cursor: pointer;
+  cursor: default;
   border: none;
   font-size: 0.95rem;
   line-height: 1.2;
@@ -671,7 +671,7 @@ section {
               box-shadow var(--transition-duration) var(--transition-timing);
   background-color: var(--color-surface); /* Changed background to surface */
   border: var(--border-width) solid var(--color-border); /* Added border */
-  cursor: pointer; /* Indicate clickable */
+  cursor: default; /* Indicate clickable */
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack image and title */
 }
@@ -1340,7 +1340,7 @@ section {
   color: var(--color-text-alt); /* Lighter color for close button */
   font-size: 2rem; /* Larger size */
   font-weight: bold;
-  cursor: pointer;
+  cursor: default;
   transition: color var(--transition-duration) var(--transition-timing);
   z-index: 210; /* Ensure it's above modal content */
   background: none; /* Remove default button background */
@@ -1365,7 +1365,7 @@ section {
   border: none;
   padding: var(--space-sm);
   font-size: 2rem;
-  cursor: pointer;
+  cursor: default;
   border-radius: var(--radius-sm);
   transition: background-color 0.3s ease;
   z-index: 205; /* Ensure they are above the image but below the close button */
@@ -1421,7 +1421,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: var(--space-sm);
-  cursor: pointer;
+  cursor: default;
   animation: fadeIn 0.3s ease-out;
 }
 
