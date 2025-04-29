@@ -154,9 +154,13 @@
 
   <div id="portfolioModal" class="modal">
     <div class="modal-content">
-      <span class="close-button">&times;</span>
+      <span class="close-button" aria-label="Закрыть модальное окно">&times;</span>
       <div class="modal-body">
-        <img id="modalImage" src="" alt="Portfolio Image">
+        <div class="modal-image-container">
+           <img id="modalImage" src="" alt="Portfolio Image">
+           <button class="prev-button" aria-label="Предыдущее фото">&#10094;</button>
+           <button class="next-button" aria-label="Следующее фото">&#10095;</button>
+        </div>
         <div class="modal-description">
           <h4 id="modalTitle"></h4>
           <p id="modalText"></p>

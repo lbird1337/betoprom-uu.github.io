@@ -1,4 +1,4 @@
-// js/main.js - Main JavaScript File (Updated with Gallery Modal Functionality)
+// js/main.js - Main JavaScript File (Updated with Gallery Modal Navigation)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Navigation Toggle ---
@@ -110,16 +110,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modalTitle');
   const modalText = document.getElementById('modalText');
   const closeButton = document.querySelector('.close-button');
+  const prevButton = document.querySelector('.prev-button');
+  const nextButton = document.querySelector('.next-button');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
 
+  let currentItemIndex = 0; // To keep track of the currently displayed item
+
+  // Function to update the modal content based on an item index
+  function updateModalContent(index) {
+      if (index >= 0 && index < portfolioItems.length) {
+          const item = portfolioItems[index];
+          const imageSrc = item.getAttribute('data-image-src');
+          const title = item.getAttribute('data-title');
+          const description = item.getAttribute('data-description');
+
+          modalImage.src = imageSrc;
+          modalImage.alt = title; // Use title as alt text for accessibility
+          modalTitle.textContent = title;
+          // Use innerHTML to render the HTML tags (like <br> and <a>) in the description
+          modalText.innerHTML = description;
+          currentItemIndex = index; // Update the current index
+      }
+  }
+
   // Function to open the modal
-  function openModal(imageSrc, title, description) {
+  function openModal(index) {
+    updateModalContent(index); // Load content for the clicked item
     modal.classList.add('is-open'); // Add class to show modal
-    modalImage.src = imageSrc;
-    modalImage.alt = title; // Use title as alt text for accessibility
-    modalTitle.textContent = title;
-    // Use innerHTML to render the HTML tags (like <br> and <a>) in the description
-    modalText.innerHTML = description;
     document.body.classList.add('modal-open'); // Prevent body scrolling
   }
 
@@ -134,20 +151,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Add click listeners to portfolio items to open the modal
-  portfolioItems.forEach(item => {
+  portfolioItems.forEach((item, index) => {
     item.addEventListener('click', () => {
-      const imageSrc = item.getAttribute('data-image-src');
-      const title = item.getAttribute('data-title');
-      const description = item.getAttribute('data-description');
-      openModal(imageSrc, title, description);
+      openModal(index); // Open modal with the index of the clicked item
     });
   });
 
   // Add click listener to the close button
   closeButton.addEventListener('click', closeModal);
 
+  // Add click listeners for navigation buttons
+  if (prevButton && nextButton) {
+      prevButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent click from closing modal
+          const prevIndex = (currentItemIndex - 1 + portfolioItems.length) % portfolioItems.length;
+          updateModalContent(prevIndex);
+      });
+
+      nextButton.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent click from closing modal
+          const nextIndex = (currentItemIndex + 1) % portfolioItems.length;
+          updateModalContent(nextIndex);
+      });
+  }
+
+
   // Close the modal if the user clicks outside of the modal content
   window.addEventListener('click', (event) => {
+    // Check if the click target is the modal background itself, not inside the modal-content
     if (event.target === modal) {
       closeModal();
     }
@@ -158,6 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.key === 'Escape' && modal.classList.contains('is-open')) {
       closeModal();
     }
+  });
+
+  // Allow navigation with arrow keys when modal is open
+  document.addEventListener('keydown', (event) => {
+      if (modal.classList.contains('is-open')) {
+          if (event.key === 'ArrowLeft') {
+              prevButton.click(); // Simulate click on previous button
+          } else if (event.key === 'ArrowRight') {
+              nextButton.click(); // Simulate click on next button
+          }
+      }
   });
 
 

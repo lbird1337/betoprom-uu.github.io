@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V28 - Gallery and Modal Styling) */
+/* css/style.css - Modern Redesign (IMPROVED V29 - Gallery and Modal Styling with Navigation) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -1062,35 +1062,56 @@ section {
 
 
   /* Modal specific mobile adjustments */
-  .modal-content {
-      width: 95%; /* Make modal wider on mobile */
-      flex-direction: column; /* Stack image and description vertically */
+  @media (max-width: 767.98px) {
+      .modal-content {
+          width: 95%; /* Make modal wider on mobile */
+          flex-direction: column; /* Stack image and description vertically */
+      }
+
+      .modal-body {
+          flex-direction: column; /* Stack image and description vertically */
+      }
+
+      .modal-image-container {
+          width: 100%; /* Image container takes full width */
+          position: relative; /* Needed for button positioning */
+      }
+
+      .modal-body #modalImage {
+          width: 100%; /* Image takes full width on mobile */
+          height: auto; /* Allow image height to adjust */
+          max-height: 60vh; /* Limit max height on mobile */
+          object-fit: contain; /* Ensure full image is visible */
+          border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
+      }
+
+
+      .modal-description {
+          width: 100%; /* Full width description */
+          padding: var(--space-md); /* Add padding */
+          padding-top: var(--space-sm); /* Adjusted top padding */
+      }
+
+      .modal-description h4 {
+          margin-bottom: var(--space-sm); /* Adjusted title margin */
+          text-align: center; /* Center title on mobile */
+      }
+
+      .modal-description p {
+          font-size: 0.95rem; /* Slightly smaller text in description */
+      }
+
+      /* Mobile navigation button positioning */
+      .prev-button, .next-button {
+          top: 50%; /* Center vertically */
+          transform: translateY(-50%);
+          padding: var(--space-xs); /* Smaller padding on mobile */
+          font-size: 1.5rem; /* Smaller font size on mobile */
+      }
+      .prev-button { left: var(--space-xs); }
+      .next-button { right: var(--space-xs); }
   }
 
-  .modal-body {
-      flex-direction: column; /* Stack image and description vertically */
-  }
-
-  .modal-body #modalImage {
-      width: 100%; /* Image takes full width on mobile */
-      border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
-  }
-
-
-  .modal-description {
-      width: 100%; /* Full width description */
-      padding: var(--space-md); /* Add padding */
-      padding-top: var(--space-sm); /* Adjusted top padding */
-  }
-
-  .modal-description h4 {
-      margin-bottom: var(--space-sm); /* Adjusted title margin */
-      text-align: center; /* Center title on mobile */
-  }
-
-  .modal-description p {
-      font-size: 0.95rem; /* Slightly smaller text in description */
-  }
 
 }
 
@@ -1240,7 +1261,7 @@ section {
   max-width: 900px; /* Max width for the modal content */
   width: 90%; /* Default width */
   display: flex; /* Use flexbox for layout inside modal */
-  flex-direction: row; /* Arrange image and description side-by-side */
+  flex-direction: column; /* Stack image and description vertically */
   overflow: hidden; /* Hide overflow */
   position: relative; /* Needed for close button positioning */
   animation: slideIn 0.4s ease-out;
@@ -1248,20 +1269,36 @@ section {
 
 .modal-body {
     display: flex; /* Use flexbox */
-    flex-direction: row; /* Arrange image and description side-by-side */
+    flex-direction: column; /* Stack image and description vertically */
     width: 100%;
 }
 
+.modal-image-container {
+    position: relative; /* Needed for button positioning */
+    width: 100%; /* Container takes full width */
+    /* Adjust padding-bottom to control the height/aspect ratio of the image container */
+    /* For a 16:9 aspect ratio, use 56.25% (9/16 * 100) */
+    /* For a 4:3 aspect ratio, use 75% (3/4 * 100) */
+    /* For a square, use 100% */
+    padding-bottom: 60%; /* Example: Adjust this value based on desired image container height */
+    height: 0; /* Collapse height */
+    overflow: hidden; /* Hide overflow */
+    border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
+    background-color: #eee; /* Add a subtle background in case image doesn't fill */
+}
 
 .modal-body #modalImage {
-    width: 60%; /* Image takes 60% of the width */
-    height: auto;
-    object-fit: cover;
-    border-radius: var(--radius) 0 0 var(--radius); /* Rounded corners only on left */
+    position: absolute; /* Position image absolutely within container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Image takes full width of container */
+    height: 100%; /* Image takes full height of container */
+    object-fit: contain; /* Ensure full image is visible */
+    border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
 }
 
 .modal-description {
-    width: 40%; /* Description takes 40% of the width */
+    width: 100%; /* Description takes full width */
     padding: var(--space-md); /* Padding for the description text */
     overflow-y: auto; /* Add scrollbar if content overflows vertically */
     color: var(--color-text-alt); /* Lighter text color */
@@ -1306,6 +1343,8 @@ section {
   cursor: pointer;
   transition: color var(--transition-duration) var(--transition-timing);
   z-index: 210; /* Ensure it's above modal content */
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
 }
 
 .close-button:hover,
@@ -1314,6 +1353,37 @@ section {
   text-decoration: none;
   outline: none;
 }
+
+/* Navigation Buttons */
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  color: white;
+  border: none;
+  padding: var(--space-sm);
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s ease;
+  z-index: 205; /* Ensure they are above the image but below the close button */
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+}
+
+.prev-button {
+  left: var(--space-sm);
+}
+
+.next-button {
+  right: var(--space-sm);
+}
+
 
 /* Animations for modal */
 @keyframes fadeIn {
@@ -1337,7 +1407,7 @@ section {
 
 
 /* ==========================================================================
-   19. LIGHTBOX STYLES (Keeping for reference, might not be used with modal)
+   20. LIGHTBOX STYLES (Keeping for reference, might not be used with modal)
    ========================================================================== */
 /* .lightbox styles are kept but might not be needed if using the modal approach */
 /* You can remove this section if the modal replaces the lightbox functionality */
