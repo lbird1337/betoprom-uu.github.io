@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V27 - Portfolio Details Styling Improved) */
+/* css/style.css - Modern Redesign (IMPROVED V28 - Gallery and Modal Styling) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -64,8 +64,8 @@
   --radius-sm: 4px; /* Smaller radius */
   --radius: 8px; /* Default radius */
   --radius-lg: 12px; /* Larger radius */
-  --transition-duration: 0.2s; /* Slightly faster transition for snappiness */
-  --transition-timing: ease-out; /* Ease-out for a smoother stop */
+  --transition-duration: 0.3s; /* Slightly faster transition for snappiness */
+  --transition-timing: ease-in-out; /* Ease-out for a smoother stop */
   --transition-base: all var(--transition-duration) var(--transition-timing); /* Combined transition */
   --max-width: 1200px; /* Adjusted max width */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow */
@@ -113,6 +113,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Prevent body scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
 
 /* Links */
 a {
@@ -648,11 +654,11 @@ section {
 
 
 /* ==========================================================================
-   12. PORTFOLIO GRID
+   12. PORTFOLIO GRID (Gallery Style)
    ========================================================================= */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Adjusted minmax for larger items */
   gap: var(--space-md); /* Adjusted gap */
 }
 
@@ -665,9 +671,9 @@ section {
               box-shadow var(--transition-duration) var(--transition-timing);
   background-color: var(--color-surface); /* Changed background to surface */
   border: var(--border-width) solid var(--color-border); /* Added border */
-  display: flex; /* Use flexbox for internal layout */
-  flex-direction: column; /* Stack children vertically */
   cursor: pointer; /* Indicate clickable */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack image and title */
 }
 
 .portfolio-item:hover {
@@ -675,15 +681,10 @@ section {
   box-shadow: var(--shadow-md); /* Slightly larger shadow on hover */
 }
 
-.portfolio-preview {
-    position: relative;
-    overflow: hidden;
-}
-
 .portfolio-item img {
   transition: transform 0.3s ease-in-out; /* Slightly faster transition */
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 10; /* Maintain aspect ratio */
   object-fit: cover;
 }
 
@@ -692,78 +693,17 @@ section {
 }
 
 .portfolio-item h4 {
-  /* Adjusted positioning and styling for better appearance */
-  position: relative; /* Changed from absolute */
+  /* Styling for the title below the image */
   padding: var(--space-sm); /* Padding around the title */
-  background-color: var(--color-surface); /* White background for title */
-  color: var(--color-text); /* Dark text for title */
+  background-color: var(--color-surface); /* White background */
+  color: var(--color-text); /* Dark text */
   font-family: var(--font-heading);
   text-align: left; /* Align title left */
   letter-spacing: -0.02em;
   font-weight: 600;
   font-size: 1.1rem;
   margin: 0;
-  /* Removed opacity transition - title is always visible now */
-  /* Removed gradient background */
-  border-bottom: var(--border-width) solid var(--color-border); /* Subtle border below title */
-}
-
-/* Removed hover opacity for h4 as it's always visible */
-.portfolio-item:hover h4 {
-    opacity: 1; /* Ensure opacity is 1 on hover (though it's always 1 now) */
-}
-
-/* Style for the expand/collapse indicator */
-.portfolio-item .expand-indicator {
-    position: absolute;
-    top: var(--space-sm);
-    right: var(--space-sm);
-    width: 24px;
-    height: 24px;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-    border-radius: 50%; /* Make it round */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: var(--color-accent); /* Accent color for the icon */
-    transition: transform var(--transition-duration) var(--transition-timing);
-    z-index: 10; /* Ensure it's above the image */
-    pointer-events: none; /* Allow click to pass through to the item */
-}
-
-.portfolio-item.is-expanded .expand-indicator {
-    transform: rotate(180deg); /* Rotate when expanded */
-}
-
-
-.portfolio-details {
-    padding: var(--space-md); /* Padding for the details section */
-    color: var(--color-text-alt); /* Lighter text color */
-    line-height: var(--line-height-base);
-    overflow: hidden; /* Hide overflow */
-    max-height: 0; /* Collapse by default */
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Smooth transition */
-    padding-top: 0; /* Start with no top padding */
-    background-color: var(--color-secondary); /* Add a light grey background to details */
-}
-
-.portfolio-item.is-expanded .portfolio-details {
-    max-height: 1000px; /* Sufficient height to show content (adjust if needed) */
-    padding-top: var(--space-md); /* Add top padding when expanded */
-}
-
-.portfolio-details p {
-    margin-bottom: var(--space-sm); /* Space between paragraphs */
-}
-
-.portfolio-details p:last-child {
-    margin-bottom: 0; /* No bottom margin on the last paragraph */
-}
-
-.portfolio-details a {
-    font-weight: 500; /* Slightly less bold for links in details */
-    color: var(--color-accent); /* Ensure links are accent color */
+  border-top: var(--border-width) solid var(--color-border); /* Subtle border above title */
 }
 
 
@@ -1088,18 +1028,9 @@ section {
       padding: 0; /* Remove padding from the main item */
   }
 
-  .portfolio-preview {
-      padding: var(--space-md); /* Add padding back to the preview */
-      padding-bottom: var(--space-sm); /* Reduce bottom padding */
-  }
-
-  .portfolio-details {
-      padding: var(--space-md); /* Ensure padding for details */
-      padding-top: 0; /* Remove top padding initially */
-  }
-
-  .portfolio-item.is-expanded .portfolio-details {
-      padding-top: var(--space-md); /* Add top padding when expanded */
+  .portfolio-item h4 {
+      padding: var(--space-sm); /* Add padding back to the title */
+      border-top: var(--border-width) solid var(--color-border); /* Ensure border is visible */
   }
 
 
@@ -1128,6 +1059,39 @@ section {
   .site-footer {
     padding: var(--space-md) var(--space-sm);
   }
+
+
+  /* Modal specific mobile adjustments */
+  .modal-content {
+      width: 95%; /* Make modal wider on mobile */
+      flex-direction: column; /* Stack image and description vertically */
+  }
+
+  .modal-body {
+      flex-direction: column; /* Stack image and description vertically */
+  }
+
+  .modal-body #modalImage {
+      width: 100%; /* Image takes full width on mobile */
+      border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
+  }
+
+
+  .modal-description {
+      width: 100%; /* Full width description */
+      padding: var(--space-md); /* Add padding */
+      padding-top: var(--space-sm); /* Adjusted top padding */
+  }
+
+  .modal-description h4 {
+      margin-bottom: var(--space-sm); /* Adjusted title margin */
+      text-align: center; /* Center title on mobile */
+  }
+
+  .modal-description p {
+      font-size: 0.95rem; /* Slightly smaller text in description */
+  }
+
 }
 
 
@@ -1163,7 +1127,7 @@ section {
   .testimonials-carousel,
   .contact,
   .site-footer,
-  [data-reveal]
+  .modal /* Hide modal in print */
   {
     display: none !important;
   }
@@ -1214,6 +1178,15 @@ section {
       margin-bottom: var(--space-xs);
    }
 
+   p { /* Ensure paragraphs are visible in print */
+       display: block !important;
+       max-height: none !important;
+       overflow: visible !important;
+       padding: 0 !important;
+       margin-bottom: var(--space-sm);
+   }
+
+
    h1, h2, h3, h4, h5, h6 {
      page-break-after: avoid;
      margin-top: var(--space-md);
@@ -1221,7 +1194,7 @@ section {
      color: var(--color-text);
    }
 
-   p, blockquote, ul, ol {
+   blockquote, ul, ol {
      page-break-inside: avoid;
      margin-bottom: var(--space-sm);
    }
@@ -1236,9 +1209,140 @@ section {
 
 
 /* ==========================================================================
-   19. LIGHTBOX STYLES
+   19. MODAL (Gallery Detail View)
    ========================================================================== */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 200; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+  align-items: center; /* Center modal content vertically */
+  justify-content: center; /* Center modal content horizontally */
+  padding: var(--space-md); /* Add padding around the modal content */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal.is-open {
+    display: flex; /* Show modal when open */
+}
+
+.modal-content {
+  background-color: var(--color-surface); /* White background for modal content */
+  margin: auto; /* Center the modal content */
+  padding: 0; /* Remove default padding */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 900px; /* Max width for the modal content */
+  width: 90%; /* Default width */
+  display: flex; /* Use flexbox for layout inside modal */
+  flex-direction: row; /* Arrange image and description side-by-side */
+  overflow: hidden; /* Hide overflow */
+  position: relative; /* Needed for close button positioning */
+  animation: slideIn 0.4s ease-out;
+}
+
+.modal-body {
+    display: flex; /* Use flexbox */
+    flex-direction: row; /* Arrange image and description side-by-side */
+    width: 100%;
+}
+
+
+.modal-body #modalImage {
+    width: 60%; /* Image takes 60% of the width */
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius) 0 0 var(--radius); /* Rounded corners only on left */
+}
+
+.modal-description {
+    width: 40%; /* Description takes 40% of the width */
+    padding: var(--space-md); /* Padding for the description text */
+    overflow-y: auto; /* Add scrollbar if content overflows vertically */
+    color: var(--color-text-alt); /* Lighter text color */
+    line-height: var(--line-height-base);
+}
+
+.modal-description h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text); /* Dark text color */
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: var(--line-height-heading);
+    border-bottom: none; /* Remove border from title in modal */
+    padding: 0; /* Remove padding from title in modal */
+    text-align: left; /* Align title left in modal */
+}
+
+.modal-description p {
+    margin-bottom: var(--space-sm); /* Space between paragraphs */
+}
+
+.modal-description p:last-child {
+    margin-bottom: 0; /* No bottom margin on the last paragraph */
+}
+
+.modal-description a {
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+
+/* The Close Button */
+.close-button {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  color: var(--color-text-alt); /* Lighter color for close button */
+  font-size: 2rem; /* Larger size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-timing);
+  z-index: 210; /* Ensure it's above modal content */
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--color-text); /* Darker color on hover/focus */
+  text-decoration: none;
+  outline: none;
+}
+
+/* Animations for modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal.is-closing {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+
+/* ==========================================================================
+   19. LIGHTBOX STYLES (Keeping for reference, might not be used with modal)
+   ========================================================================== */
+/* .lightbox styles are kept but might not be needed if using the modal approach */
+/* You can remove this section if the modal replaces the lightbox functionality */
 .lightbox {
+  display: none; /* Hide if using modal */
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.9);
@@ -1276,19 +1380,4 @@ section {
   text-align: center;
   padding: var(--space-xs) 0;
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
-
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-.lightbox.is-closing {
-  animation: fadeOut 0.3s ease-out forwards;
 }

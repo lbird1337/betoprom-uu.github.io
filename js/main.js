@@ -1,4 +1,4 @@
-// js/main.js - Main JavaScript File (Updated with Portfolio Click)
+// js/main.js - Main JavaScript File (Updated with Gallery Modal Functionality)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Navigation Toggle ---
@@ -104,22 +104,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Portfolio Item Click to Expand/Collapse Details ---
+  // --- Gallery Modal Functionality ---
+  const modal = document.getElementById('portfolioModal');
+  const modalImage = document.getElementById('modalImage');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+  const closeButton = document.querySelector('.close-button');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-  portfolioItems.forEach(item => {
-    // Add click listener to the entire portfolio item
-    item.addEventListener('click', () => {
-      // Toggle the 'is-expanded' class on the clicked item
-      item.classList.toggle('is-expanded');
+  // Function to open the modal
+  function openModal(imageSrc, title, description) {
+    modal.classList.add('is-open'); // Add class to show modal
+    modalImage.src = imageSrc;
+    modalImage.alt = title; // Use title as alt text for accessibility
+    modalTitle.textContent = title;
+    // Use innerHTML to render the HTML tags (like <br> and <a>) in the description
+    modalText.innerHTML = description;
+    document.body.classList.add('modal-open'); // Prevent body scrolling
+  }
 
-      // Optional: Close other expanded items when one is clicked
-      portfolioItems.forEach(otherItem => {
-        if (otherItem !== item && otherItem.classList.contains('is-expanded')) {
-          otherItem.classList.remove('is-expanded');
-        }
-      });
+  // Function to close the modal
+  function closeModal() {
+    modal.classList.add('is-closing'); // Add class for closing animation
+    modal.addEventListener('animationend', function handleAnimationEnd() {
+      modal.classList.remove('is-open', 'is-closing'); // Remove classes after animation
+      document.body.classList.remove('modal-open'); // Re-enable body scrolling
+      modal.removeEventListener('animationend', handleAnimationEnd); // Clean up the event listener
     });
+  }
+
+  // Add click listeners to portfolio items to open the modal
+  portfolioItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const imageSrc = item.getAttribute('data-image-src');
+      const title = item.getAttribute('data-title');
+      const description = item.getAttribute('data-description');
+      openModal(imageSrc, title, description);
+    });
+  });
+
+  // Add click listener to the close button
+  closeButton.addEventListener('click', closeModal);
+
+  // Close the modal if the user clicks outside of the modal content
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close the modal if the user presses the Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
   });
 
 
