@@ -430,7 +430,7 @@ ol, ul {
   justify-content: center;
   text-align: center;
   /* Add background image - Replace with your image URL */
-  background: url('https://placehold.co/1920x1080/E2E8F0/2D3748?text=Your+Background+Image') center/cover no-repeat; /* Placeholder Image */
+  background: url("./img/industrial-construction-engineer-pollution.jpg") center/cover no-repeat;
   background-size: cover; /* Ensure background covers the area */
   /* --- HERO BACKGROUND IMAGE --- */
   /* Replace the URL in the 'background' property above with the URL or path to your desired background image. */
