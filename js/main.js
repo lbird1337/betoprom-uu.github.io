@@ -1,4 +1,4 @@
-// js/main.js - Main JavaScript File (Enhanced Mobile Features)
+// js/main.js - Main JavaScript File (Enhanced Mobile Features & Content Updates)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Navigation Toggle ---
