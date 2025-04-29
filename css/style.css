@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V33 - Corrected Hero Background URL) */
+/* css/style.css - Modern Redesign (IMPROVED V32 - Updated for HTML Changes and Default Cursor) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -112,7 +112,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: default; /* Set default cursor for the entire body */
+  cursor: default; /* Set default cursor for the body */
 }
 
 /* Prevent body scrolling when modal is open */
@@ -126,7 +126,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-duration) var(--transition-timing);
-  cursor: pointer; /* Keep pointer cursor for interactive links */
+  cursor: default; /* Keep default cursor for standard links */
 }
 
 a:hover {
@@ -229,7 +229,7 @@ ol, ul {
   flex-shrink: 0; /* Prevent logo from shrinking */
   position: relative; /* Needed for the accent pseudo-element */
   display: inline-block; /* Allow pseudo-element positioning */
-  cursor: pointer; /* Keep pointer cursor for logo (it's a link) */
+  cursor: default; /* Keep default cursor for logo */
 }
 
 /* Subtle blue accent line below the logo text */
@@ -279,7 +279,7 @@ ol, ul {
   transition: color var(--transition-duration) var(--transition-timing); /* Only transition color */
   color: var(--color-header-text); /* Dark link color */
   border-bottom: none; /* Ensure no border-bottom */
-  cursor: pointer; /* Keep pointer cursor for nav links */
+  cursor: default; /* Keep default cursor for nav links */
 }
 
 /* Subtle underline animation on hover */
@@ -332,7 +332,7 @@ ol, ul {
     transition: background-color var(--transition-duration) var(--transition-timing),
                 box-shadow var(--transition-duration) var(--transition-timing),
                 color var(--transition-duration) var(--transition-timing); /* Added color transition */
-    cursor: pointer; /* Keep pointer cursor for primary buttons */
+    cursor: default; /* Keep pointer cursor for primary buttons */
     border: none;
     text-decoration: none; /* Ensure no underline */
     box-shadow: var(--shadow-sm); /* Subtle shadow */
@@ -360,7 +360,7 @@ ol, ul {
     color: var(--color-text); /* Dark text color */
     text-decoration: none;
     transition: color var(--transition-duration) var(--transition-timing);
-    cursor: pointer; /* Keep pointer cursor for secondary link */
+    cursor: default; /* Keep default cursor */
 }
 
 .btn-secondary-link:hover {
@@ -373,7 +373,7 @@ ol, ul {
   display: none; /* Hidden by default */
   background: none;
   border: none;
-  cursor: pointer; /* Keep pointer cursor for the hamburger button */
+  cursor: default; /* Keep pointer cursor for the hamburger button */
   padding: var(--space-xs);
   z-index: 101;
 }
@@ -430,7 +430,6 @@ ol, ul {
   justify-content: center;
   text-align: center;
   /* Add background image - Replace with your image URL */
-  /* Corrected background URL syntax */
   background: url('./img/industrial-construction-engineer-pollution.jpg') center/cover no-repeat;
   background-size: cover; /* Ensure background covers the area */
   /* --- HERO BACKGROUND IMAGE --- */
@@ -523,7 +522,7 @@ ol, ul {
   transition: background-color var(--transition-duration) var(--transition-timing),
               transform var(--transition-duration) var(--transition-timing),
               box-shadow var(--transition-duration) var(--transition-timing);
-  cursor: pointer; /* Keep pointer cursor for general buttons */
+  cursor: default; /* Keep pointer cursor for general buttons */
   border: none;
   font-size: 0.95rem;
   line-height: 1.2;
@@ -536,7 +535,7 @@ ol, ul {
   color: var(--color-text); /* Uses Slate Gray */
   box-shadow: var(--shadow-sm);
   border: var(--border-width) solid var(--color-border);
-  cursor: pointer; /* Keep pointer cursor for secondary button */
+  cursor: default; /* Keep pointer cursor for secondary buttons */
 }
 .btn-secondary:hover {
   background-color: var(--color-secondary-hover);
@@ -678,7 +677,7 @@ section {
               box-shadow var(--transition-duration) var(--transition-timing);
   background-color: var(--color-surface); /* Changed background to surface */
   border: var(--border-width) solid var(--color-border); /* Added border */
-  cursor: pointer; /* Keep pointer cursor for portfolio items as they open a modal */
+  cursor: default; /* Keep pointer cursor for portfolio items as they are clickable */
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack image and title */
 }
@@ -817,7 +816,6 @@ section {
 .contact a {
   font-weight: 600;
   color: var(--color-accent); /* Uses Warm Amber */
-  cursor: pointer; /* Keep pointer cursor for contact links */
 }
 
 .contact a:hover {
@@ -919,7 +917,7 @@ section {
 
   /* Hide nav group on mobile and show hamburger */
   .nav-group {
-      display: none; /* Hidden by default, controlled by JS for mobile */
+      display: none; /* Hidden by default */
   }
 
 
@@ -1064,477 +1062,67 @@ section {
   }
 
 
-  /* ==========================================================================
-   15. FOOTER
-   ========================================================================== */
-.site-footer {
-  background: var(--color-surface); /* Uses White */
-  padding: var(--space-md) var(--space-sm);
-  text-align: center;
-  color: var(--color-text-alt); /* Uses slightly lighter Slate Gray */
-  margin-block-start: var(--space-lg);
-  border-top: var(--border-width) solid var(--color-border);
-}
-
-.site-footer p {
-  margin-bottom: var(--space-xs);
-  font-size: 0.85rem;
-}
-
-
-/* ==========================================================================
-   16. REVEAL ON SCROLL ANIMATION
-   ========================================================================== */
-/* Kept as is, contributes to modern feel */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  will-change: opacity, transform;
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ==========================================================================
-   17. RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-
-/* Medium devices (tables, less than 992px) */
-@media (max-width: 991.98px) {
-  :root {
-    --space-lg: calc(var(--space-unit) * 5); /* Adjusted spacing */
-    --space-xl: calc(var(--space-unit) * 8); /* Adjusted spacing */
-  }
-
-  .nav-group {
-      gap: var(--space-sm); /* Reduce gap in nav group */
-  }
-
-  .nav-menu {
-    gap: var(--space-md);
-  }
-
-  /* Adjust "Связаться с нами" button margin on medium screens */
-  .btn-primary { /* Changed to btn-primary */
-      /* No specific margin needed here with gap on nav-group */
-  }
-
-  section {
-      padding-block: var(--space-lg); /* Adjusted section padding */
-  }
-
-  .section-title {
-      margin-bottom: var(--space-md); /* Adjusted space after title */
-  }
-}
-
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-  :root {
-    --space-md: calc(var(--space-unit) * 4); /* Increased spacing for mobile sections */
-    --space-lg: calc(var(--space-unit) * 6); /* Increased spacing for mobile sections */
-    --space-xl: calc(var(--space-unit) * 8); /* Increased spacing for mobile sections */
-  }
-
-  body {
-    font-size: 0.95rem; /* Slightly larger base font size for mobile */
-  }
-
-  .site-header {
-    padding-block: var(--space-xs);
-  }
-
-  .nav-toggle {
-    display: block; /* Show hamburger on small screens */
-  }
-
-  /* Hide nav group on mobile and show hamburger */
-  .nav-group {
-      display: none; /* Hidden by default, controlled by JS for mobile */
+  .site-footer {
+    padding: var(--space-md) var(--space-sm);
   }
 
 
-  .nav-menu {
-    display: none; /* Hidden by default, shown with .is-open */
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    width: 100%;
-    background: var(--color-surface); /* Use surface background for mobile menu */
-    flex-direction: column;
-    padding: var(--space-md);
-    gap: var(--space-sm);
-    box-shadow: var(--shadow-md);
-    border-top: var(--border-width) solid var(--color-border);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-  }
+  /* Modal specific mobile adjustments */
+  @media (max-width: 767.98px) {
+      .modal-content {
+          width: 95%; /* Make modal wider on mobile */
+          flex-direction: column; /* Stack image and description vertically */
+      }
 
-  .nav-menu.is-open {
-    display: flex; /* Show menu when is-open class is present */
-    max-height: 500px; /* Adjust as needed */
-    padding: var(--space-md);
-  }
+      .modal-body {
+          flex-direction: column; /* Stack image and description vertically */
+      }
 
-  .nav-menu li {
-      width: 100%; /* Full width list items */
-  }
+      .modal-image-container {
+          width: 100%; /* Image container takes full width */
+          position: relative; /* Needed for button positioning */
+      }
 
-  .nav-menu a {
-    font-size: 1rem; /* Slightly larger font size for mobile links */
-    padding: var(--space-sm) 0; /* Increased padding for touch targets */
-    text-align: center;
-    border-bottom: var(--border-width) solid var(--color-border);
-    color: var(--color-text); /* Use default text color for mobile links */
-    background-color: transparent; /* Ensure no background on mobile links */
-    border-radius: 0; /* Remove border-radius on mobile links */
-  }
-   .nav-menu li:last-child a {
-      border-bottom: none;
-   }
-
-   /* Style for buttons/links inside the mobile menu */
-   .nav-menu .btn-primary,
-   .nav-menu .btn-secondary-link {
-       display: flex; /* Make them flex items */
-       width: 100%; /* Full width */
-       justify-content: center; /* Center text */
-       margin-top: var(--space-sm); /* Add space between items */
-       padding: var(--space-sm); /* Adjust padding */
-   }
-
-   .nav-menu .btn-secondary-link {
-       border: none; /* Remove border for the secondary link */
-       color: var(--color-text); /* Use default text color */
-   }
-
-   .nav-menu .btn-secondary-link:hover {
-       color: var(--color-accent); /* Accent color on hover */
-   }
+      .modal-body #modalImage {
+          width: 100%; /* Image takes full width on mobile */
+          height: auto; /* Allow image height to adjust */
+          max-height: 60vh; /* Limit max height on mobile */
+          object-fit: contain; /* Ensure full image is visible */
+          border-radius: var(--radius) var(--radius) 0 0; /* Rounded corners only on top */
+      }
 
 
-  .hero {
-    min-height: 60vh; /* Adjusted min-height for mobile hero */
-    padding-top: 80px; /* Adjusted for smaller header */
-    padding-bottom: var(--space-md);
-  }
+      .modal-description {
+          width: 100%; /* Full width description */
+          padding: var(--space-md); /* Add padding */
+          padding-top: var(--space-sm); /* Adjusted top padding */
+      }
 
-  .hero-content {
-    padding: var(--space-md);
-  }
+      .modal-description h4 {
+          margin-bottom: var(--space-sm); /* Adjusted title margin */
+          text-align: center; /* Center title on mobile */
+      }
 
-  .hero-content h1 {
-    font-size: clamp(2rem, 7vw, 3rem); /* Adjusted font size */
-    margin-bottom: var(--space-sm); /* Reduced margin */
-  }
+      .modal-description p {
+          font-size: 0.95rem; /* Slightly smaller text in description */
+      }
 
-  .hero-content p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Adjusted font size */
-    margin-bottom: var(--space-lg);
-  }
-
-  .hero-content .btn-primary {
-      margin-top: var(--space-md); /* Adjusted button margin */
+      /* Mobile navigation button positioning */
+      .prev-button, .next-button {
+          top: 50%; /* Center vertically */
+          transform: translateY(-50%);
+          padding: var(--space-xs); /* Smaller padding on mobile */
+          font-size: 1.5rem; /* Smaller font size on mobile */
+      }
+      .prev-button { left: var(--space-xs); }
+      .next-button { right: var(--space-xs); }
   }
 
 
-  .section-title {
-    font-size: clamp(2rem, 6vw, 2.5rem); /* Adjusted font size */
-    margin-bottom: var(--space-md);
-  }
-
-  section {
-      padding-block: var(--space-lg); /* Adjusted section padding */
-  }
-
-  .advantages-list,
-  .services-grid,
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md); /* Increased gap for vertical stacking */
-  }
-
-  .advantages-list li,
-  .service-item,
-  .testimonial {
-      padding: var(--space-md); /* Consistent padding for mobile items */
-  }
-
-  /* Portfolio item specific mobile adjustments */
-  .portfolio-item {
-      padding: 0; /* Remove padding from the main item */
-  }
-
-  .portfolio-item h4 {
-      padding: var(--space-sm); /* Add padding back to the title */
-      border-top: var(--border-width) solid var(--color-border); /* Ensure border is visible */
-  }
-
-
-  .testimonials-carousel {
-    scroll-padding-inline: var(--space-md); /* Increased scroll padding */
-    gap: var(--space-md); /* Increased gap */
-  }
-  .testimonial {
-    flex-basis: 90%; /* Adjusted width for testimonials */
-  }
-
-  .contact {
-    padding-block: var(--space-lg); /* Adjusted padding */
-    margin-block: var(--space-lg); /* Adjusted margin */
-  }
-
-  .contact p {
-      margin-bottom: var(--space-sm); /* Reduced margin for paragraphs */
-  }
-
-  .contact .btn {
-      margin-top: var(--space-md); /* Adjusted button margin */
-  }
-
-
-  /* ==========================================================================
-   15. FOOTER
-   ========================================================================== */
-.site-footer {
-  background: var(--color-surface); /* Uses White */
-  padding: var(--space-md) var(--space-sm);
-  text-align: center;
-  color: var(--color-text-alt); /* Uses slightly lighter Slate Gray */
-  margin-block-start: var(--space-lg);
-  border-top: var(--border-width) solid var(--color-border);
-}
-
-.site-footer p {
-  margin-bottom: var(--space-xs);
-  font-size: 0.85rem;
 }
 
 
 /* ==========================================================================
-   16. REVEAL ON SCROLL ANIMATION
-   ========================================================================== */
-/* Kept as is, contributes to modern feel */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  will-change: opacity, transform;
-}
-
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* ==========================================================================
-   17. RESPONSIVE BREAKPOINTS
-   ========================================================================== */
-
-/* Medium devices (tables, less than 992px) */
-@media (max-width: 991.98px) {
-  :root {
-    --space-lg: calc(var(--space-unit) * 5); /* Adjusted spacing */
-    --space-xl: calc(var(--space-unit) * 8); /* Adjusted spacing */
-  }
-
-  .nav-group {
-      gap: var(--space-sm); /* Reduce gap in nav group */
-  }
-
-  .nav-menu {
-    gap: var(--space-md);
-  }
-
-  /* Adjust "Связаться с нами" button margin on medium screens */
-  .btn-primary { /* Changed to btn-primary */
-      /* No specific margin needed here with gap on nav-group */
-  }
-
-  section {
-      padding-block: var(--space-lg); /* Adjusted section padding */
-  }
-
-  .section-title {
-      margin-bottom: var(--space-md); /* Adjusted space after title */
-  }
-}
-
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-  :root {
-    --space-md: calc(var(--space-unit) * 4); /* Increased spacing for mobile sections */
-    --space-lg: calc(var(--space-unit) * 6); /* Increased spacing for mobile sections */
-    --space-xl: calc(var(--space-unit) * 8); /* Increased spacing for mobile sections */
-  }
-
-  body {
-    font-size: 0.95rem; /* Slightly larger base font size for mobile */
-  }
-
-  .site-header {
-    padding-block: var(--space-xs);
-  }
-
-  .nav-toggle {
-    display: block; /* Show hamburger on small screens */
-  }
-
-  /* Hide nav group on mobile and show hamburger */
-  .nav-group {
-      display: none; /* Hidden by default, controlled by JS for mobile */
-  }
-
-
-  .nav-menu {
-    display: none; /* Hidden by default, shown with .is-open */
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    width: 100%;
-    background: var(--color-surface); /* Use surface background for mobile menu */
-    flex-direction: column;
-    padding: var(--space-md);
-    gap: var(--space-sm);
-    box-shadow: var(--shadow-md);
-    border-top: var(--border-width) solid var(--color-border);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-  }
-
-  .nav-menu.is-open {
-    display: flex; /* Show menu when is-open class is present */
-    max-height: 500px; /* Adjust as needed */
-    padding: var(--space-md);
-  }
-
-  .nav-menu li {
-      width: 100%; /* Full width list items */
-  }
-
-  .nav-menu a {
-    font-size: 1rem; /* Slightly larger font size for mobile links */
-    padding: var(--space-sm) 0; /* Increased padding for touch targets */
-    text-align: center;
-    border-bottom: var(--border-width) solid var(--color-border);
-    color: var(--color-text); /* Use default text color for mobile links */
-    background-color: transparent; /* Ensure no background on mobile links */
-    border-radius: 0; /* Remove border-radius on mobile links */
-  }
-   .nav-menu li:last-child a {
-      border-bottom: none;
-   }
-
-   /* Style for buttons/links inside the mobile menu */
-   .nav-menu .btn-primary,
-   .nav-menu .btn-secondary-link {
-       display: flex; /* Make them flex items */
-       width: 100%; /* Full width */
-       justify-content: center; /* Center text */
-       margin-top: var(--space-sm); /* Add space between items */
-       padding: var(--space-sm); /* Adjust padding */
-   }
-
-   .nav-menu .btn-secondary-link {
-       border: none; /* Remove border for the secondary link */
-       color: var(--color-text); /* Use default text color */
-   }
-
-   .nav-menu .btn-secondary-link:hover {
-       color: var(--color-accent); /* Accent color on hover */
-   }
-
-
-  .hero {
-    min-height: 60vh; /* Adjusted min-height for mobile hero */
-    padding-top: 80px; /* Adjusted for smaller header */
-    padding-bottom: var(--space-md);
-  }
-
-  .hero-content {
-    padding: var(--space-md);
-  }
-
-  .hero-content h1 {
-    font-size: clamp(2rem, 7vw, 3rem); /* Adjusted font size */
-    margin-bottom: var(--space-sm); /* Reduced margin */
-  }
-
-  .hero-content p {
-    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Adjusted font size */
-    margin-bottom: var(--space-lg);
-  }
-
-  .hero-content .btn-primary {
-      margin-top: var(--space-md); /* Adjusted button margin */
-  }
-
-
-  .section-title {
-    font-size: clamp(2rem, 6vw, 2.5rem); /* Adjusted font size */
-    margin-bottom: var(--space-md);
-  }
-
-  section {
-      padding-block: var(--space-lg); /* Adjusted section padding */
-  }
-
-  .advantages-list,
-  .services-grid,
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md); /* Increased gap for vertical stacking */
-  }
-
-  .advantages-list li,
-  .service-item,
-  .testimonial {
-      padding: var(--space-md); /* Consistent padding for mobile items */
-  }
-
-  /* Portfolio item specific mobile adjustments */
-  .portfolio-item {
-      padding: 0; /* Remove padding from the main item */
-  }
-
-  .portfolio-item h4 {
-      padding: var(--space-sm); /* Add padding back to the title */
-      border-top: var(--border-width) solid var(--color-border); /* Ensure border is visible */
-  }
-
-
-  .testimonials-carousel {
-    scroll-padding-inline: var(--space-md); /* Increased scroll padding */
-    gap: var(--space-md); /* Increased gap */
-  }
-  .testimonial {
-    flex-basis: 90%; /* Adjusted width for testimonials */
-  }
-
-  .contact {
-    padding-block: var(--space-lg); /* Adjusted padding */
-    margin-block: var(--space-lg); /* Adjusted margin */
-  }
-
-  .contact p {
-      margin-bottom: var(--space-sm); /* Reduced margin for paragraphs */
-  }
-
-  .contact .btn {
-      margin-top: var(--space-md); /* Adjusted button margin */
-  }
-
-
-  /* ==========================================================================
    18. PRINT STYLES
    ========================================================================== */
 @media print {
@@ -1758,7 +1346,7 @@ section {
   color: var(--color-text-alt); /* Lighter color for close button */
   font-size: 2rem; /* Larger size */
   font-weight: bold;
-  cursor: pointer; /* Keep pointer cursor for close button */
+  cursor: default; /* Keep pointer cursor for the close button */
   transition: color var(--transition-duration) var(--transition-timing);
   z-index: 210; /* Ensure it's above modal content */
   background: none; /* Remove default button background */
@@ -1783,7 +1371,7 @@ section {
   border: none;
   padding: var(--space-sm);
   font-size: 2rem;
-  cursor: pointer; /* Keep pointer cursor for navigation buttons */
+  cursor: default; /* Keep pointer cursor for navigation buttons */
   border-radius: var(--radius-sm);
   transition: background-color 0.3s ease;
   z-index: 205; /* Ensure they are above the image but below the close button */
@@ -1839,7 +1427,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: var(--space-sm);
-  cursor: pointer; /* Keep pointer cursor for lightbox (if used) */
+  cursor: default; /* Keep pointer cursor for lightbox if it were used */
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -1859,7 +1447,7 @@ section {
   object-fit: contain;
   border-radius: var(--radius);
   box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-  cursor: default; /* Default cursor on the image within the lightbox */
+  cursor: default;
 }
 
 .lightbox figcaption {
