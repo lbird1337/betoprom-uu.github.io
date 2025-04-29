@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V31 - Mobile Menu & Cursor Fixes) */
+/* css/style.css - Modern Redesign (IMPROVED V32 - Updated for HTML Changes and Default Cursor) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -112,6 +112,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: default; /* Set default cursor for the body */
 }
 
 /* Prevent body scrolling when modal is open */
@@ -125,8 +126,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color var(--transition-duration) var(--transition-timing);
-  /* Keep default cursor for standard links */
-  cursor: auto; /* Or default */
+  cursor: auto; /* Keep default cursor for standard links */
 }
 
 a:hover {
@@ -332,7 +332,7 @@ ol, ul {
     transition: background-color var(--transition-duration) var(--transition-timing),
                 box-shadow var(--transition-duration) var(--transition-timing),
                 color var(--transition-duration) var(--transition-timing); /* Added color transition */
-    /* Removed cursor: pointer; */
+    cursor: pointer; /* Keep pointer cursor for primary buttons */
     border: none;
     text-decoration: none; /* Ensure no underline */
     box-shadow: var(--shadow-sm); /* Subtle shadow */
@@ -522,7 +522,7 @@ ol, ul {
   transition: background-color var(--transition-duration) var(--transition-timing),
               transform var(--transition-duration) var(--transition-timing),
               box-shadow var(--transition-duration) var(--transition-timing);
-  /* Removed cursor: pointer; */
+  cursor: pointer; /* Keep pointer cursor for general buttons */
   border: none;
   font-size: 0.95rem;
   line-height: 1.2;
@@ -535,6 +535,7 @@ ol, ul {
   color: var(--color-text); /* Uses Slate Gray */
   box-shadow: var(--shadow-sm);
   border: var(--border-width) solid var(--color-border);
+  cursor: pointer; /* Keep pointer cursor for secondary buttons */
 }
 .btn-secondary:hover {
   background-color: var(--color-secondary-hover);
@@ -676,7 +677,7 @@ section {
               box-shadow var(--transition-duration) var(--transition-timing);
   background-color: var(--color-surface); /* Changed background to surface */
   border: var(--border-width) solid var(--color-border); /* Added border */
-  /* Removed cursor: pointer; */
+  cursor: pointer; /* Keep pointer cursor for portfolio items as they are clickable */
   display: flex; /* Use flexbox */
   flex-direction: column; /* Stack image and title */
 }
@@ -1345,7 +1346,7 @@ section {
   color: var(--color-text-alt); /* Lighter color for close button */
   font-size: 2rem; /* Larger size */
   font-weight: bold;
-  /* Removed cursor: pointer; */
+  cursor: pointer; /* Keep pointer cursor for the close button */
   transition: color var(--transition-duration) var(--transition-timing);
   z-index: 210; /* Ensure it's above modal content */
   background: none; /* Remove default button background */
@@ -1370,7 +1371,7 @@ section {
   border: none;
   padding: var(--space-sm);
   font-size: 2rem;
-  /* Removed cursor: pointer; */
+  cursor: pointer; /* Keep pointer cursor for navigation buttons */
   border-radius: var(--radius-sm);
   transition: background-color 0.3s ease;
   z-index: 205; /* Ensure they are above the image but below the close button */
@@ -1426,7 +1427,7 @@ section {
   align-items: center;
   justify-content: center;
   padding: var(--space-sm);
-  /* Removed cursor: pointer; */
+  cursor: pointer; /* Keep pointer cursor for lightbox if it were used */
   animation: fadeIn 0.3s ease-out;
 }
 
