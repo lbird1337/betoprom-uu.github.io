@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V26 - Portfolio Details Styling Refined) */
+/* css/style.css - Modern Redesign (IMPROVED V27 - Portfolio Details Styling Improved) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -713,6 +713,29 @@ section {
     opacity: 1; /* Ensure opacity is 1 on hover (though it's always 1 now) */
 }
 
+/* Style for the expand/collapse indicator */
+.portfolio-item .expand-indicator {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    width: 24px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 50%; /* Make it round */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--color-accent); /* Accent color for the icon */
+    transition: transform var(--transition-duration) var(--transition-timing);
+    z-index: 10; /* Ensure it's above the image */
+    pointer-events: none; /* Allow click to pass through to the item */
+}
+
+.portfolio-item.is-expanded .expand-indicator {
+    transform: rotate(180deg); /* Rotate when expanded */
+}
+
 
 .portfolio-details {
     padding: var(--space-md); /* Padding for the details section */
@@ -722,6 +745,7 @@ section {
     max-height: 0; /* Collapse by default */
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Smooth transition */
     padding-top: 0; /* Start with no top padding */
+    background-color: var(--color-secondary); /* Add a light grey background to details */
 }
 
 .portfolio-item.is-expanded .portfolio-details {
