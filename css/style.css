@@ -1,4 +1,4 @@
-/* css/style.css - Modern Redesign (IMPROVED V23 - Enhanced Mobile Compatibility) */
+/* css/style.css - Modern Redesign (IMPROVED V24 - Further Mobile Enhancements) */
 
 /* ==========================================================================
    1. GOOGLE FONTS
@@ -890,13 +890,13 @@ section {
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
   :root {
-    --space-md: calc(var(--space-unit) * 2); /* Adjusted spacing */
-    --space-lg: calc(var(--space-unit) * 4); /* Adjusted spacing */
-    --space-xl: calc(var(--space-unit) * 6); /* Adjusted spacing */
+    --space-md: calc(var(--space-unit) * 4); /* Increased spacing for mobile sections */
+    --space-lg: calc(var(--space-unit) * 6); /* Increased spacing for mobile sections */
+    --space-xl: calc(var(--space-unit) * 8); /* Increased spacing for mobile sections */
   }
 
   body {
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Slightly larger base font size for mobile */
   }
 
   .site-header {
@@ -942,8 +942,8 @@ section {
   }
 
   .nav-menu a {
-    font-size: 0.95rem;
-    padding: var(--space-sm) 0;
+    font-size: 1rem; /* Slightly larger font size for mobile links */
+    padding: var(--space-sm) 0; /* Increased padding for touch targets */
     text-align: center;
     border-bottom: var(--border-width) solid var(--color-border);
     color: var(--color-text); /* Use default text color for mobile links */
@@ -975,8 +975,8 @@ section {
 
 
   .hero {
-    min-height: 400px; /* Adjusted min-height */
-    padding-top: 60px; /* Adjusted for smaller header */
+    min-height: 60vh; /* Adjusted min-height for mobile hero */
+    padding-top: 80px; /* Adjusted for smaller header */
     padding-bottom: var(--space-md);
   }
 
@@ -985,37 +985,65 @@ section {
   }
 
   .hero-content h1 {
-    font-size: clamp(2.2rem, 7vw, 3rem); /* Adjusted font size */
+    font-size: clamp(2rem, 7vw, 3rem); /* Adjusted font size */
+    margin-bottom: var(--space-sm); /* Reduced margin */
   }
 
   .hero-content p {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Adjusted font size */
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Adjusted font size */
     margin-bottom: var(--space-lg);
   }
+
+  .hero-content .btn-primary {
+      margin-top: var(--space-md); /* Adjusted button margin */
+  }
+
 
   .section-title {
     font-size: clamp(2rem, 6vw, 2.5rem); /* Adjusted font size */
     margin-bottom: var(--space-md);
   }
 
+  section {
+      padding-block: var(--space-lg); /* Adjusted section padding */
+  }
+
   .advantages-list,
   .services-grid,
   .portfolio-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-sm);
+    gap: var(--space-md); /* Increased gap for vertical stacking */
   }
 
+  .advantages-list li,
+  .service-item,
+  .portfolio-item,
+  .testimonial {
+      padding: var(--space-md); /* Consistent padding for mobile items */
+  }
+
+
   .testimonials-carousel {
-    scroll-padding-inline: var(--space-xs);
+    scroll-padding-inline: var(--space-md); /* Increased scroll padding */
+    gap: var(--space-md); /* Increased gap */
   }
   .testimonial {
-    flex-basis: 95%;
+    flex-basis: 90%; /* Adjusted width for testimonials */
   }
 
   .contact {
-    padding-block: var(--space-md);
-    margin-block: var(--space-md);
+    padding-block: var(--space-lg); /* Adjusted padding */
+    margin-block: var(--space-lg); /* Adjusted margin */
   }
+
+  .contact p {
+      margin-bottom: var(--space-sm); /* Reduced margin for paragraphs */
+  }
+
+  .contact .btn {
+      margin-top: var(--space-md); /* Adjusted button margin */
+  }
+
 
   .site-footer {
     padding: var(--space-md) var(--space-sm);
