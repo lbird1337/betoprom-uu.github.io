@@ -1,37 +1,1480 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&subset=cyrillic,latin&display=swap');:root{--color-bg:#F7FAFC;--color-surface:#ffffff;--color-text:#2D3748;--color-text-alt:#4A5568;--color-accent:#3182CE;--color-accent-hover:#2C5282;--color-primary:var(--color-accent);--color-primary-hover:var(--color-accent-hover);--color-secondary:#EDF2F7;--color-secondary-hover:#E2E8F0;--color-border:#E2E8F0;--color-focus-ring:var(--color-accent);--color-header-bg:#ffffff;--color-header-text:var(--color-text);--color-header-link-hover-text:var(--color-accent);--color-header-link-underline:var(--color-accent);--color-header-border:var(--color-border);--color-eco-green-sage:#87A96B;--color-eco-green-forest:#3D5A3B;--color-warning:#C44536;--font-heading:'Inter',sans-serif;--font-body:'Inter',sans-serif;--font-ui:'Inter',sans-serif;--font-size-base:1rem;--line-height-base:1.6;--line-height-heading:1.2;--space-unit:0.25rem;--space-xs:calc(var(--space-unit)*2);--space-sm:calc(var(--space-unit)*4);--space-md:calc(var(--space-unit)*6);--space-lg:calc(var(--space-unit)*8);--space-xl:calc(var(--space-unit)*12);--space-xxl:calc(var(--space-unit)*16);--radius-sm:4px;--radius:8px;--radius-lg:12px;--transition-duration:0.3s;--transition-timing:ease-in-out;--transition-base:all var(--transition-duration)var(--transition-timing);--max-width:1200px;--shadow-sm:0 1px 3px rgba(0,0,0,0.05);--shadow-md:0 4px 6px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px rgba(0,0,0,0.1);--border-width:1px}*,*::before,*::after{box-sizing:border-box}
-body,h1,h2,h3,h4,h5,h6,p,blockquote,figure,ol,ul,li,fieldset,legend,button,input,textarea,select{margin:0;padding:0}
-html{font-size:100%;scroll-behavior:smooth;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%}
-body{font-family:var(--font-body);font-size:var(--font-size-base);line-height:var(--line-height-base);color:var(--color-text);background-color:var(--color-bg);min-height:100vh;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:default}
-body.modal-open{overflow:hidden}
-a{color:var(--color-accent);text-decoration:none;transition:color var(--transition-duration)var(--transition-timing);cursor:default}
-a:hover{color:var(--color-accent-hover);text-decoration:none}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--color-focus-ring);outline-offset:3px;box-shadow:0 0 0 4px rgba(var(--color-focus-ring),0.3);border-radius:var(--radius-sm)}*:focus:not(:focus-visible){outline:none}
-img,video,svg{max-width:100%;height:auto;display:block}
-ol,ul{list-style:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;transition-delay:0ms!important}}.container{width:95%;max-width:var(--max-width);margin-inline:auto;padding-inline:var(--space-sm)}.site-header{position:fixed;top:0;left:0;width:100%;padding-block:var(--space-sm);background:var(--color-header-bg);border-bottom:var(--border-width)solid var(--color-header-border);z-index:100;transition:background-color var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);box-shadow:var(--shadow-sm);color:var(--color-header-text)}.navbar{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md)}.site-logo{font-family:var(--font-heading);font-size:1.4rem;font-weight:700;color:var(--color-header-text);text-transform:uppercase;letter-spacing:0.05em;text-decoration:none;flex-shrink:0;position:relative;display:inline-block;cursor:default}.site-logo::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:3px;background-color:var(--color-accent);transform-origin:bottom left;transition:transform var(--transition-duration)var(--transition-timing);transform:scaleX(1)}.site-logo:hover::after{transform:scaleX(0.8)}.nav-group{display:flex;align-items:center;gap:var(--space-md)}.nav-menu{list-style:none;display:flex;align-items:center;gap:var(--space-md)}.nav-menu li{}.nav-menu a{font-family:var(--font-ui);font-weight:500;font-size:0.9rem;padding:var(--space-xs)0;position:relative;transition:color var(--transition-duration)var(--transition-timing);color:var(--color-header-text);border-bottom:none;cursor:default}.nav-menu a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background-color:var(--color-header-link-underline);transition:width var(--transition-duration)var(--transition-timing)}.nav-menu a:hover::after{width:100%}.nav-menu a:hover{color:var(--color-header-link-hover-text);background-color:transparent}.nav-menu a[aria-current="page"]{font-weight:600;color:var(--color-accent);background-color:transparent;border-bottom:none}.nav-menu a[aria-current="page"]::after{width:100%}.btn-primary{display:inline-flex;align-items:center;justify-content:center;background-color:var(--color-primary);color:#ffffff;padding:var(--space-sm)var(--space-md);border-radius:var(--radius-sm);font-family:var(--font-ui);font-weight:500;font-size:0.9rem;letter-spacing:0.02em;transition:background-color var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing),color var(--transition-duration)var(--transition-timing);cursor:default;border:none;text-decoration:none;box-shadow:var(--shadow-sm)}.btn-primary:hover{background-color:var(--color-secondary);color:var(--color-text);box-shadow:var(--shadow-md)}.btn-primary:active{background-color:var(--color-primary);color:#ffffff;box-shadow:var(--shadow-sm)}.btn-secondary-link{font-family:var(--font-ui);font-weight:500;font-size:0.9rem;color:var(--color-text);text-decoration:none;transition:color var(--transition-duration)var(--transition-timing);cursor:default}.btn-secondary-link:hover{color:var(--color-accent)}.nav-toggle{display:none;background:none;border:none;cursor:default;padding:var(--space-xs);z-index:101}.hamburger,.hamburger::before,.hamburger::after{content:'';display:block;width:26px;height:2px;background-color:var(--color-header-text);transition:transform var(--transition-duration)var(--transition-timing),opacity var(--transition-duration)var(--transition-timing),background-color var(--transition-duration)var(--transition-timing);position:relative}.hamburger::before{transform:translateY(-7px)}.hamburger::after{transform:translateY(7px)}.nav-toggle.is-active.hamburger{transform:rotate(45deg);background-color:var(--color-accent)}.nav-toggle.is-active.hamburger::before{transform:translateY(0)rotate(90deg);background-color:var(--color-accent)}.nav-toggle.is-active.hamburger::after{opacity:0;transform:translateY(0)}.hero{position:relative;width:100%;min-height:100vh;min-height:-webkit-fill-available;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;background:url('../img/backgroundimage1.jpg')center/cover no-repeat;background-size:cover;padding-top:100px;padding-bottom:var(--space-lg);box-sizing:border-box;overflow:hidden}.hero::before{content:'';position:absolute;inset:0;background-color:rgba(0,0,0,0.5);z-index:1}.hero-content{position:relative;z-index:2;max-width:900px;padding:var(--space-xl);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);animation:fadeInUp 0.8s ease-out;color:#ffffff}.hero-content h1{font-family:var(--font-heading);font-size:clamp(3rem,8vw,4.5rem);line-height:var(--line-height-heading);margin-bottom:var(--space-md);text-shadow:0 2px 4px rgba(0,0,0,0.3);letter-spacing:-0.04em;color:#ffffff;font-weight:700}.hero-content p{font-family:var(--font-body);font-size:clamp(1.1rem,2.5vw,1.3rem);margin-bottom:var(--space-xl);line-height:var(--line-height-base);font-weight:400;color:rgba(255,255,255,0.9);max-width:70ch;margin-inline:auto}.hero-content.btn-primary{margin-top:var(--space-lg)}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}}.btn{display:inline-flex;align-items:center;justify-content:center;padding:var(--space-sm)var(--space-md);border-radius:var(--radius-sm);font-family:var(--font-ui);font-weight:500;text-transform:uppercase;letter-spacing:0.05em;transition:background-color var(--transition-duration)var(--transition-timing),transform var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);cursor:default;border:none;font-size:0.95rem;line-height:1.2;text-decoration:none}.btn-secondary{background-color:var(--color-secondary);color:var(--color-text);box-shadow:var(--shadow-sm);border:var(--border-width)solid var(--color-border);cursor:default}.btn-secondary:hover{background-color:var(--color-secondary-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}.btn-secondary:active{transform:translateY(0);box-shadow:var(--shadow-sm)}
-section{padding-block:var(--space-xl)}.section-title{font-family:var(--font-heading);font-size:clamp(2.5rem,6vw,3.5rem);line-height:var(--line-height-heading);margin-bottom:var(--space-lg);text-align:center;color:var(--color-text);letter-spacing:-0.03em;font-weight:700}.advantages-list{list-style:none;max-width:100%;margin-inline:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-md);padding:0}.advantages-list li{background:var(--color-surface);padding:var(--space-md);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);border:var(--border-width)solid var(--color-border);display:flex;flex-direction:column;gap:var(--space-xs)}.advantages-list li:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}.advantages-list strong{color:var(--color-accent);font-weight:600;display:block;font-size:1.1rem}.advantages-list p{color:var(--color-text-alt);line-height:var(--line-height-base)}.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-md)}.service-item{background:var(--color-surface);padding:var(--space-md);border-radius:var(--radius);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-sm);transition:transform var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);border:var(--border-width)solid var(--color-border)}.service-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}.service-item h3{font-family:var(--font-heading);color:var(--color-text);margin-bottom:var(--space-sm);letter-spacing:-0.02em;font-weight:600;font-size:1.5rem;line-height:var(--line-height-heading)}.service-item p{flex-grow:1;color:var(--color-text-alt);line-height:var(--line-height-base)}.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-md)}.portfolio-item{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);background-color:var(--color-surface);border:var(--border-width)solid var(--color-border);cursor:default;display:flex;flex-direction:column}.portfolio-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}.portfolio-item img{transition:transform 0.3s ease-in-out;width:100%;aspect-ratio:16/10;object-fit:cover}.portfolio-item:hover img{transform:scale(1.05)}.portfolio-item h4{padding:var(--space-sm);background-color:var(--color-surface);color:var(--color-text);font-family:var(--font-heading);text-align:left;letter-spacing:-0.02em;font-weight:600;font-size:1.1rem;margin:0;border-top:var(--border-width)solid var(--color-border)}.testimonials-carousel{display:flex;overflow-x:auto;gap:var(--space-md);scroll-snap-type:x mandatory;padding-block-end:var(--space-sm);scroll-padding-inline:var(--space-sm);scrollbar-width:thin;scrollbar-color:var(--color-accent)var(--color-secondary)}.testimonials-carousel::-webkit-scrollbar{height:8px}.testimonials-carousel::-webkit-scrollbar-track{background:var(--color-secondary);border-radius:4px}.testimonials-carousel::-webkit-scrollbar-thumb{background-color:var(--color-accent);border-radius:4px}.testimonial{flex:0 0 clamp(300px,80%,400px);background:var(--color-surface);padding:var(--space-md);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform var(--transition-duration)var(--transition-timing),box-shadow var(--transition-duration)var(--transition-timing);min-height:220px;display:flex;flex-direction:column;justify-content:space-between;border:var(--border-width)solid var(--color-border)}.testimonial:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}.testimonial blockquote{font-style:italic;color:var(--color-text-alt);margin-block-end:var(--space-sm);flex-grow:1;line-height:var(--line-height-base);quotes:"“" "”" "‘" "’"}.testimonial blockquote::before{content:open-quote;margin-right:0.25em;font-size:1.4em;color:var(--color-accent);line-height:0;vertical-align:-0.3em}.testimonial blockquote::after{content:close-quote;margin-left:0.25em;font-size:1.4em;color:var(--color-accent);line-height:0;vertical-align:-0.3em}.testimonial cite{display:block;text-align:right;font-weight:500;font-style:normal;color:var(--color-text);margin-top:var(--space-xs)}.contact{text-align:center;padding-block:var(--space-xl);background-color:var(--color-surface);margin-block:var(--space-lg);border-radius:var(--radius);box-shadow:var(--shadow-md);border:var(--border-width)solid var(--color-border)}.contact p{font-size:1rem;color:var(--color-text);margin-bottom:var(--space-md);line-height:var(--line-height-base)}.contact a{font-weight:600;color:var(--color-accent)}.contact a:hover{color:var(--color-accent-hover)}.contact.btn{margin-top:var(--space-md)}.site-footer{background:var(--color-surface);padding:var(--space-md)var(--space-sm);text-align:center;color:var(--color-text-alt);margin-block-start:var(--space-lg);border-top:var(--border-width)solid var(--color-border)}.site-footer p{margin-bottom:var(--space-xs);font-size:0.85rem}[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease-out,transform 0.6s ease-out;will-change:opacity,transform}[data-reveal].is-visible{opacity:1;transform:translateY(0)}
-@media(max-width:991.98px){:root{--space-lg:calc(var(--space-unit)*5);--space-xl:calc(var(--space-unit)*8)}.nav-group{gap:var(--space-sm)}.nav-menu{gap:var(--space-md)}.btn-primary{}
-section{padding-block:var(--space-lg)}.section-title{margin-bottom:var(--space-md)}}
-@media(max-width:767.98px){:root{--space-md:calc(var(--space-unit)*4);--space-lg:calc(var(--space-unit)*6);--space-xl:calc(var(--space-unit)*8)}
-body{font-size:0.95rem}.site-header{padding-block:var(--space-xs)}.nav-toggle{display:block}.nav-group{display:none}.nav-menu{display:none;position:absolute;top:100%;right:0;left:0;width:100%;background:var(--color-surface);flex-direction:column;padding:var(--space-md);gap:var(--space-sm);box-shadow:var(--shadow-md);border-top:var(--border-width)solid var(--color-border);max-height:0;overflow:hidden;transition:max-height 0.4s ease-in-out,padding 0.4s ease-in-out}.nav-menu.is-open{display:flex;max-height:500px;padding:var(--space-md)}.nav-menu li{width:100%}.nav-menu a{font-size:1rem;padding:var(--space-sm)0;text-align:center;border-bottom:var(--border-width)solid var(--color-border);color:var(--color-text);background-color:transparent;border-radius:0}.nav-menu li:last-child a{border-bottom:none}.nav-menu.btn-primary,.nav-menu.btn-secondary-link{display:flex;width:100%;justify-content:center;margin-top:var(--space-sm);padding:var(--space-sm)}.nav-menu.btn-secondary-link{border:none;color:var(--color-text)}.nav-menu.btn-secondary-link:hover{color:var(--color-accent)}.hero{min-height:60vh;padding-top:80px;padding-bottom:var(--space-md)}.hero-content{padding:var(--space-md)}.hero-content h1{font-size:clamp(2rem,7vw,3rem);margin-bottom:var(--space-sm)}.hero-content p{font-size:clamp(1rem,2.5vw,1.2rem);margin-bottom:var(--space-lg)}.hero-content.btn-primary{margin-top:var(--space-md)}.section-title{font-size:clamp(2rem,6vw,2.5rem);margin-bottom:var(--space-md)}
-section{padding-block:var(--space-lg)}.advantages-list,.services-grid,.portfolio-grid{grid-template-columns:1fr;gap:var(--space-md)}.advantages-list li,.service-item,.testimonial{padding:var(--space-md)}.portfolio-item{padding:0}.portfolio-item h4{padding:var(--space-sm);border-top:var(--border-width)solid var(--color-border)}.testimonials-carousel{scroll-padding-inline:var(--space-md);gap:var(--space-md)}.testimonial{flex-basis:90%}.contact{padding-block:var(--space-lg);margin-block:var(--space-lg)}.contact p{margin-bottom:var(--space-sm)}.contact.btn{margin-top:var(--space-md)}.site-footer{padding:var(--space-md)var(--space-sm)}
-@media(max-width:767.98px){.modal-content{width:95%;flex-direction:column}.modal-body{flex-direction:column}.modal-image-container{width:100%;position:relative}.modal-body #modalImage{width:100%;height:auto;max-height:60vh;object-fit:contain;border-radius:var(--radius)var(--radius)0 0}.modal-description{width:100%;padding:var(--space-md);padding-top:var(--space-sm)}.modal-description h4{margin-bottom:var(--space-sm);text-align:center}.modal-description p{font-size:0.95rem}.prev-button,.next-button{top:50%;transform:translateY(-50%);padding:var(--space-xs);font-size:1.5rem}.prev-button{left:var(--space-xs)}.next-button{right:var(--space-xs)}}}
-@media print{:root{--color-bg:#ffffff;--color-surface:#ffffff;--color-text:#000000;--color-text-alt:#333333;--color-accent:#000000;--color-border:#cccccc;--shadow-sm:none;--shadow-md:none;--shadow-lg:none;--radius-sm:0;--radius:0;--radius-lg:0}
-body{font-size:12pt;line-height:1.4;background-color:transparent;color:black}.site-header,.nav-toggle,.btn,.testimonials-carousel,.contact,.site-footer,.modal
-{display:none!important}
-section,.container{padding:0;margin:0;max-width:100%;width:100%}
-a{color:#000000;text-decoration:underline}
-a[href^="http"]::after{content:" (" attr(href)") ";font-size:9pt;font-weight:normal;color:#333}.advantages-list,.services-grid,.portfolio-grid{grid-template-columns:1fr;box-shadow:none;border:none}.advantages-list li,.service-item,.portfolio-item{box-shadow:none;border:1px solid var(--color-border);page-break-inside:avoid;margin-bottom:var(--space-sm);padding:var(--space-sm)}.portfolio-item h4{position:static;background:transparent;color:var(--color-text);text-align:left;padding:var(--space-xs)0;font-size:1rem}
-img{max-width:100%!important;border-radius:0;margin-bottom:var(--space-xs)}
-p{display:block!important;max-height:none!important;overflow:visible!important;padding:0!important;margin-bottom:var(--space-sm)}
-h1,h2,h3,h4,h5,h6{page-break-after:avoid;margin-top:var(--space-md);margin-bottom:var(--space-sm);color:var(--color-text)}
-blockquote,ul,ol{page-break-inside:avoid;margin-bottom:var(--space-sm)}
-blockquote{border-left:3px solid var(--color-border);padding-left:var(--space-sm);margin-left:var(--space-sm);font-style:normal}}.modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.8);align-items:center;justify-content:center;padding:var(--space-md);animation:fadeIn 0.3s ease-out}.modal.is-open{display:flex}.modal-content{background-color:var(--color-surface);margin:auto;padding:0;border-radius:var(--radius);box-shadow:var(--shadow-lg);max-width:900px;width:90%;display:flex;flex-direction:column;overflow:hidden;position:relative;animation:slideIn 0.4s ease-out}.modal-body{display:flex;flex-direction:column;width:100%}.modal-image-container{position:relative;width:100%;padding-bottom:60%;height:0;overflow:hidden;border-radius:var(--radius)var(--radius)0 0;background-color:#eee}.modal-body #modalImage{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius)var(--radius)0 0}.modal-description{width:100%;padding:var(--space-md);overflow-y:auto;color:var(--color-text-alt);line-height:var(--line-height-base)}.modal-description h4{font-family:var(--font-heading);color:var(--color-text);margin-bottom:var(--space-md);letter-spacing:-0.02em;font-weight:600;font-size:1.3rem;line-height:var(--line-height-heading);border-bottom:none;padding:0;text-align:left}.modal-description p{margin-bottom:var(--space-sm)}.modal-description p:last-child{margin-bottom:0}.modal-description a{font-weight:500;color:var(--color-accent)}.close-button{position:absolute;top:var(--space-sm);right:var(--space-sm);color:var(--color-text-alt);font-size:2rem;font-weight:bold;cursor:default;transition:color var(--transition-duration)var(--transition-timing);z-index:210;background:none;border:none}.close-button:hover,.close-button:focus{color:var(--color-text);text-decoration:none;outline:none}.prev-button,.next-button{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(0,0,0,0.5);color:white;border:none;padding:var(--space-sm);font-size:2rem;cursor:default;border-radius:var(--radius-sm);transition:background-color 0.3s ease;z-index:205}.prev-button:hover,.next-button:hover{background-color:rgba(0,0,0,0.8)}.prev-button{left:var(--space-sm)}.next-button{right:var(--space-sm)}
-@keyframes fadeIn{from{opacity:0}
-to{opacity:1}}
-@keyframes fadeOut{from{opacity:1}
-to{opacity:0}}
-@keyframes slideIn{from{transform:translateY(20px);opacity:0}
-to{transform:translateY(0);opacity:1}}.modal.is-closing{animation:fadeOut 0.3s ease-out forwards}.lightbox{display:none;position:fixed;inset:0;background-color:rgba(0,0,0,0.9);z-index:1000;display:flex;align-items:center;justify-content:center;padding:var(--space-sm);cursor:default;animation:fadeIn 0.3s ease-out}.lightbox figure{display:flex;flex-direction:column;align-items:center;gap:var(--space-sm);max-width:95vw;max-height:95vh}.lightbox img{display:block;max-width:100%;max-height:90vh;object-fit:contain;border-radius:var(--radius);box-shadow:0 8px 25px rgba(0,0,0,0.6);cursor:default}.lightbox figcaption{color:#fff;font-size:1.1rem;text-align:center;padding:var(--space-xs)0;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+/* css/style.css - Профессиональный редизайн (IMPROVED V35 - С разделом Доставка и Оплата) */
+
+/* ==========================================================================
+   1. GOOGLE FONTS
+   ========================================================================== */
+/*
+   Используем Inter - чистый, современный шрифт без засечек с хорошей поддержкой кириллицы.
+   Убедитесь, что этот шрифт загружен до применения CSS (например, в <head>).
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&subset=cyrillic,latin&display=swap');
+
+
+/* ==========================================================================
+   2. ROOT VARIABLES
+   ========================================================================== */
+:root {
+  /* Цвета - Обновлены на основе предоставленного стиля изображения */
+  --color-bg: #F7FAFC; /* Светлый фон */
+  --color-surface: #ffffff; /* Белый - Фон карточек/секций */
+  --color-text: #2D3748; /* Темный цвет текста (Slate Gray) */
+  --color-text-alt: #4A5568; /* Чуть светлее текст для второстепенных элементов (Gray) */
+  --color-accent: #3182CE; /* Яркий синий - Основной акцентный цвет (кнопки, ссылки) */
+  --color-accent-hover: #2C5282; /* Более темный синий при наведении */
+  --color-primary: var(--color-accent); /* Псевдоним для акцента */
+  --color-primary-hover: var(--color-accent-hover); /* Псевдоним для акцента при наведении */
+  --color-secondary: #EDF2F7; /* Очень светлый серый */
+  --color-secondary-hover: #E2E8F0; /* Чуть темнее светлый серый при наведении */
+  --color-border: #E2E8F0; /* Светлый цвет границы */
+  --color-focus-ring: var(--color-accent); /* Высококонтрастный цвет для состояний фокуса (соответствует акценту) */
+
+
+  /* Типография */
+  --font-heading: 'Inter', sans-serif; /* Используем Inter для заголовков */
+  --font-body: 'Inter', sans-serif; /* Используем Inter для основного текста */
+  --font-ui: 'Inter', sans-serif; /* Используем Inter для элементов интерфейса */
+  --font-size-base: 1rem; /* Базовый размер шрифта (1rem = 16px по умолчанию) */
+  --line-height-base: 1.6; /* Базовая высота строки */
+  --line-height-heading: 1.2; /* Высота строки для заголовков */
+
+  /* Шкала отступов - Используем единицы rem для масштабируемости */
+  --space-unit: 0.25rem; /* Базовая единица 4px для более точного контроля */
+  --space-xs: calc(var(--space-unit) * 2); /* 8px */
+  --space-sm: calc(var(--space-unit) * 4); /* 16px */
+  --space-md: calc(var(--space-unit) * 6); /* 24px */
+  --space-lg: calc(var(--space-unit) * 8); /* 32px */
+  --space-xl: calc(var(--space-unit) * 12); /* 48px */
+  --space-xxl: calc(var(--space-unit) * 16); /* 64px */
+
+  /* Макет и эффекты */
+  --radius-sm: 4px; /* Меньший радиус */
+  --radius: 8px; /* Радиус по умолчанию */
+  --radius-lg: 12px; /* Больший радиус */
+  --transition-duration: 0.3s; /* Чуть быстрее переход для отзывчивости */
+  --transition-timing: ease-in-out; /* Ease-out для более плавного завершения */
+  --transition-base: all var(--transition-duration) var(--transition-timing); /* Комбинированный переход */
+  --max-width: 1200px; /* Скорректированная максимальная ширина */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05); /* Легкая тень */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1); /* Средняя тень */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1); /* Большая тень */
+  --border-width: 1px; /* Ширина границы по умолчанию */
+}
+
+
+/* ==========================================================================
+   3. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+/* Сброс box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Базовый сброс элементов */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, figure, ol, ul, li,
+fieldset, legend, button, input, textarea, select {
+  margin: 0;
+  padding: 0;
+}
+
+/* Базовые стили HTML */
+html {
+  font-size: 100%; /* Гарантирует, что 1rem = 16px по умолчанию */
+  scroll-behavior: smooth; /* Плавная прокрутка */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Базовые стили Body */
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default; /* Устанавливаем курсор по умолчанию для всего body */
+}
+
+/* Запретить прокрутку body при открытом модальном окне */
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* Ссылки */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing);
+  cursor: pointer; /* Оставляем курсор-указатель для интерактивных ссылок */
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration: none; /* Убираем подчеркивание при наведении для более чистого вида */
+}
+
+/* Улучшенные состояния фокуса для доступности */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(var(--color-focus-ring), 0.3);
+  border-radius: var(--radius-sm);
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Изображения, видео, SVG */
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Сброс стилей списков */
+ol, ul {
+  list-style: none;
+}
+
+/* Предпочтение сниженного движения */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+
+/* ==========================================================================
+   4. CONTAINER
+   ========================================================================== */
+.container {
+  width: 95%; /* Чуть более широкий контейнер */
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-sm);
+}
+
+
+/* ==========================================================================
+   5. HEADER
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-block: var(--space-sm);
+  background: var(--color-surface); /* Белый фон для шапки */
+  border-bottom: var(--border-width) solid var(--color-border); /* Легкая нижняя граница */
+  z-index: 100;
+  transition: background-color var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  box-shadow: var(--shadow-sm); /* Легкая тень */
+  color: var(--color-text); /* Темный текст */
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Логотип слева, навигация/кнопки справа */
+  gap: var(--space-md); /* Отступ между логотипом и группой навигации */
+}
+
+.site-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem; /* Чуть меньше размер шрифта логотипа */
+  font-weight: 700;
+  color: var(--color-text); /* Темный цвет логотипа */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  flex-shrink: 0; /* Запретить сжатие логотипа */
+  position: relative; /* Необходимо для псевдоэлемента акцента */
+  display: inline-block; /* Разрешить позиционирование псевдоэлемента */
+  cursor: pointer; /* Оставляем курсор-указатель для логотипа (это ссылка) */
+}
+
+/* Легкая синяя акцентная линия под текстом логотипа */
+.site-logo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px; /* Позиция под текстом */
+    width: 100%; /* Полная ширина текста */
+    height: 3px; /* Толщина линии */
+    background-color: var(--color-accent); /* Яркий синий акцентный цвет */
+    transform-origin: bottom left; /* Начало анимации */
+    transition: transform var(--transition-duration) var(--transition-timing); /* Анимировать transform */
+    transform: scaleX(1); /* Начинаем с полной ширины */
+}
+
+.site-logo:hover::after {
+    transform: scaleX(0.8); /* Чуть сжимается при наведении для легкого эффекта */
+}
+
+
+/* Обертка для навигационных ссылок и кнопок */
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md); /* Отступ между навигационным меню и кнопками */
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center; /* Выравнивание элементов по вертикали */
+  gap: var(--space-md); /* Отступ между навигационными ссылками */
+}
+
+.nav-menu li {
+    /* Нет необходимости в специфичных полях */
+}
+
+.nav-menu a {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: var(--space-xs) 0; /* Отступ для области клика */
+  position: relative; /* Необходимо для псевдоэлемента подчеркивания */
+  transition: color var(--transition-duration) var(--transition-timing); /* Только переход цвета */
+  color: var(--color-text); /* Темный цвет ссылки */
+  border-bottom: none; /* Убедитесь, что нет нижней границы */
+  cursor: pointer; /* Оставляем курсор-указатель для навигационных ссылок */
+}
+
+/* Легкая анимация подчеркивания при наведении */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Позиция под текстом */
+    width: 0; /* Начинаем с нулевой ширины */
+    height: 2px;
+    background-color: var(--color-accent); /* Акцентный цвет подчеркивания */
+    transition: width var(--transition-duration) var(--transition-timing); /* Анимировать ширину */
+}
+
+.nav-menu a:hover::after {
+    width: 100%; /* Расширяется до полной ширины при наведении */
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent); /* Изменяем цвет текста на акцентный при наведении */
+  background-color: transparent; /* Убедитесь, что нет фона при наведении */
+}
+
+/* Стиль для ссылки активной страницы */
+.nav-menu a[aria-current="page"] {
+  font-weight: 600; /* Чуть жирнее для активной */
+  color: var(--color-accent); /* Акцентный цвет для активной ссылки */
+  background-color: transparent; /* Убедитесь, что нет фона для активной ссылки */
+  border-bottom: none;
+}
+
+/* Убедитесь, что активная ссылка имеет видимое подчеркивание */
+.nav-menu a[aria-current="page"]::after {
+    width: 100%;
+}
+
+/* Стили для кнопки/ссылки "Связаться с нами" */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary); /* Используем яркий синий акцентный цвет */
+    color: #ffffff; /* Белый текст */
+    padding: var(--space-sm) var(--space-md); /* Скорректированный отступ */
+    border-radius: var(--radius-sm); /* Используем меньший радиус */
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.9rem; /* Скорректированный размер шрифта */
+    letter-spacing: 0.02em; /* Чуть более плотный межбуквенный интервал */
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing),
+                color var(--transition-duration) var(--transition-timing); /* Добавлен переход цвета */
+    cursor: pointer; /* Оставляем курсор-указатель для основных кнопок */
+    border: none;
+    text-decoration: none; /* Убедитесь, что нет подчеркивания */
+    box-shadow: var(--shadow-sm); /* Легкая тень */
+}
+
+.btn-primary:hover {
+    /* Более минималистичный эффект при наведении: легкое изменение фона и цвета текста */
+    background-color: var(--color-secondary); /* Изменяем фон на очень светлый серый */
+    color: var(--color-text); /* Изменяем цвет текста на темный */
+    box-shadow: var(--shadow-md); /* Сохраняем легкое изменение тени */
+}
+
+.btn-primary:active {
+    background-color: var(--color-primary); /* Возвращаем сплошной синий при клике */
+    color: #ffffff; /* Возвращаем текст на белый при клике */
+    box-shadow: var(--shadow-sm); /* Возвращаем тень */
+}
+
+
+/* Стиль для второстепенной кнопки/ссылки (например, "Войти") */
+.btn-secondary-link {
+    font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-text); /* Темный цвет текста */
+    text-decoration: none;
+    transition: color var(--transition-duration) var(--transition-timing);
+    cursor: pointer; /* Оставляем курсор-указатель для второстепенной ссылки */
+}
+
+.btn-secondary-link:hover {
+    color: var(--color-accent); /* Акцентный цвет при наведении */
+}
+
+
+/* Переключатель мобильной навигации */
+.nav-toggle {
+  display: none; /* Скрыт по умолчанию */
+  background: none;
+  border: none;
+  cursor: pointer; /* Оставляем курсор-указатель для кнопки гамбургера */
+  padding: var(--space-xs);
+  z-index: 101;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: var(--color-text); /* Темные линии гамбургера */
+  transition: transform var(--transition-duration) var(--transition-timing),
+              opacity var(--transition-duration) var(--transition-timing),
+              background-color var(--transition-duration) var(--transition-timing);
+  position: relative;
+}
+
+.hamburger::before {
+  transform: translateY(-7px);
+}
+
+.hamburger::after {
+  transform: translateY(7px);
+}
+
+.nav-toggle.is-active .hamburger {
+  transform: rotate(45deg);
+  background-color: var(--color-accent); /* Акцентный цвет при активации */
+}
+
+.nav-toggle.is-active .hamburger::before {
+  transform: translateY(0) rotate(90deg);
+  background-color: var(--color-accent); /* Акцентный цвет при активации */
+}
+
+.nav-toggle.is-active .hamburger::after {
+  opacity: 0;
+  transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   6. HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Гарантирует, что занимает как минимум полную высоту области просмотра */
+  min-height: -webkit-fill-available; /* Для лучшей совместимости с мобильными устройствами */
+  min-height: 600px; /* Минимальная высота по умолчанию */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Добавляем фоновое изображение - Замените URL на свое изображение */
+  /* Скорректированный синтаксис URL фона с относительным путем от файла CSS */
+  background: url('../img/industrial-construction-engineer-pollution.jpg') center/cover no-repeat;
+  background-size: cover; /* Убедитесь, что фон покрывает область */
+  /* --- ФОНОВОЕ ИЗОБРАЖЕНИЕ HERO --- */
+  /* Замените URL в свойстве 'background' выше на URL или путь к желаемому фоновому изображению. */
+  /* Пример: background: url('/path/to/your/image.jpg') center/cover no-repeat; */
+  /* Если используете внешний URL: background: url('https://www.example.com/images/your-background.jpg') center/cover no-repeat; */
+  /* ----------------------------- */
+  padding-top: 100px; /* Добавляем отступ для учета фиксированной шапки */
+  padding-bottom: var(--space-lg);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Добавляем темное наложение поверх фонового изображения */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачное черное наложение */
+  z-index: 1; /* Размещаем над фоновым изображением */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Убедитесь, что контент находится над наложением */
+  max-width: 900px; /* Увеличенная максимальная ширина для текста hero */
+  padding: var(--space-xl); /* Увеличенный отступ */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.8s ease-out;
+  color: #ffffff; /* Белый текст для контента hero */
+}
+
+.hero-content h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 8vw, 4.5rem); /* Более крупный, более эффектный заголовок */
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.04em; /* Более плотный межбуквенный интервал для эффекта */
+  color: #ffffff; /* Белый цвет заголовка */
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  margin-bottom: var(--space-xl);
+  line-height: var(--line-height-base);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9); /* Чуть прозрачный белый для параграфа */
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+/* Стиль для кнопки внутри контента hero */
+.hero-content .btn-primary {
+    margin-top: var(--space-lg); /* Добавляем отступ над кнопкой */
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================================================================
+   7. BUTTONS (Обобщенные)
+   ========================================================================== */
+/* Стиль .btn-primary определен в разделе шапки для специфичности */
+/* Улучшенные общие стили кнопок для более профессионального вида */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md); /* Скорректированный отступ для более компактного вида */
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color var(--transition-duration) var(--transition-timing),
+              transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  cursor: pointer; /* Оставляем курсор-указатель для общих кнопок */
+  border: none;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+/* Пример для второстепенной кнопки */
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width) solid var(--color-border);
+  cursor: pointer; /* Оставляем курсор-указатель для второстепенных кнопок */
+}
+.btn-secondary:hover {
+  background-color: var(--color-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ==========================================================================
+   8. SECTION GENERIC STYLES
+   ========================================================================== */
+section {
+  padding-block: var(--space-xl); /* Увеличенный вертикальный отступ для большего пространства */
+}
+
+
+/* ==========================================================================
+   9. SECTION TITLES
+   ========================================================================== */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 3.5rem); /* Более крупные, более заметные заголовки */
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--space-lg); /* Увеличенный отступ после заголовка */
+  text-align: center;
+  color: var(--color-text);
+  letter-spacing: -0.03em; /* Более плотный межбуквенный интервал */
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   10. ADVANTAGES LIST (Пример использования Grid)
+   ========================================================================== */
+.advantages-list {
+  list-style: none;
+  max-width: 100%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-md); /* Скорректированный отступ */
+  padding: 0;
+}
+
+.advantages-list li {
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); /* Более легкая тень */
+  transition: transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  border: var(--border-width) solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.advantages-list li:hover {
+  transform: translateY(-3px); /* Легкий подъем */
+  box-shadow: var(--shadow-md); /* Чуть большая тень при наведении */
+}
+
+.advantages-list strong {
+  color: var(--color-accent);
+  font-weight: 600;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.advantages-list p {
+  color: var(--color-text-alt);
+  line-height: var(--line-height-base);
+}
+
+
+/* ==========================================================================
+   11. SERVICES GRID
+   ========================================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-md); /* Скорректированный отступ */
+}
+
+.service-item {
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); /* Более легкая тень */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.service-item:hover {
+  transform: translateY(-3px); /* Легкий подъем */
+  box-shadow: var(--shadow-md); /* Чуть большая тень при наведении */
+}
+
+.service-item h3 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: var(--line-height-heading);
+}
+
+.service-item p {
+  flex-grow: 1;
+  color: var(--color-text-alt);
+  line-height: var(--line-height-base);
+}
+
+
+/* ==========================================================================
+   12. PORTFOLIO GRID (Стиль галереи)
+   ========================================================================= */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); /* Скорректированный minmax для более крупных элементов */
+  gap: var(--space-md); /* Скорректированный отступ */
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); /* Более легкая тень */
+  transition: transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border); /* Добавлена граница */
+  cursor: pointer; /* Оставляем курсор-указатель для элементов портфолио, так как они открывают модальное окно */
+  display: flex; /* Используем flexbox */
+  flex-direction: column; /* Располагаем изображение и заголовок вертикально */
+}
+
+.portfolio-item:hover {
+  transform: translateY(-3px); /* Легкий подъем */
+  box-shadow: var(--shadow-md); /* Чуть большая тень при наведении */
+}
+
+.portfolio-item img {
+  transition: transform 0.3s ease-in-out; /* Чуть быстрее переход */
+  width: 100%;
+  aspect-ratio: 16 / 10; /* Сохраняем соотношение сторон */
+  object-fit: cover;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05); /* Чуть меньше масштабирование */
+}
+
+.portfolio-item h4 {
+  /* Стиль для заголовка под изображением */
+  padding: var(--space-sm); /* Отступ вокруг заголовка */
+  background-color: var(--color-surface); /* Белый фон */
+  color: var(--color-text); /* Темный текст */
+  font-family: var(--font-heading);
+  text-align: left; /* Выравнивание заголовка по левому краю */
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  border-top: var(--border-width) solid var(--color-border); /* Легкая граница над заголовком */
+}
+
+
+/* ==========================================================================
+   13. TESTIMONIALS CAROUSEL (CSS-only Scroll Snap)
+   ========================================================================== */
+.testimonials-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--space-md); /* Скорректированный отступ */
+  scroll-snap-type: x mandatory; /* Обязательная привязка прокрутки по оси X */
+  padding-block-end: var(--space-sm); /* Отступ в конце блока прокрутки */
+  scroll-padding-inline: var(--space-sm); /* Отступ по бокам прокрутки */
+  scrollbar-width: thin; /* Тонкая полоса прокрутки */
+  scrollbar-color: var(--color-accent) var(--color-secondary); /* Цвет полосы прокрутки и ее фона */
+}
+.testimonials-carousel::-webkit-scrollbar {
+  height: 8px; /* Высота полосы прокрутки для Webkit */
+}
+.testimonials-carousel::-webkit-scrollbar-track {
+  background: var(--color-secondary); /* Фон полосы прокрутки для Webkit */
+  border-radius: 4px;
+}
+.testimonials-carousel::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent); /* Цвет ползунка полосы прокрутки для Webkit */
+  border-radius: 4px;
+}
+
+.testimonial {
+  flex: 0 0 clamp(300px, 80%, 400px); /* Скорректированная ширина для отзывов */
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); /* Более легкая тень */
+  transition: transform var(--transition-duration) var(--transition-timing),
+              box-shadow var(--transition-duration) var(--transition-timing);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: var(--border-width) solid var(--color-border);
+  scroll-snap-align: start; /* Привязка к началу элемента при прокрутке */
+}
+
+.testimonial:hover {
+  transform: translateY(-3px); /* Легкий подъем */
+  box-shadow: var(--shadow-md); /* Чуть большая тень при наведении */
+}
+
+.testimonial blockquote {
+  font-style: italic;
+  color: var(--color-text-alt);
+  margin-block-end: var(--space-sm);
+  flex-grow: 1;
+  line-height: var(--line-height-base);
+  quotes: "“" "”" "‘" "’"; /* Типы кавычек */
+}
+.testimonial blockquote::before {
+  content: open-quote; /* Открывающая кавычка */
+  margin-right: 0.25em;
+  font-size: 1.4em;
+  color: var(--color-accent);
+  line-height: 0;
+  vertical-align: -0.3em;
+}
+.testimonial blockquote::after {
+  content: close-quote; /* Закрывающая кавычка */
+  margin-left: 0.25em;
+  font-size: 1.4em;
+  color: var(--color-accent);
+  line-height: 0;
+  vertical-align: -0.3em;
+}
+
+.testimonial cite {
+  display: block;
+  text-align: right;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-text);
+  margin-top: var(--space-xs);
+}
+
+
+/* ==========================================================================
+   14. CONTACT & CTA
+   ========================================================================== */
+.contact {
+  text-align: center;
+  padding-block: var(--space-xl); /* Увеличенный вертикальный отступ */
+  background-color: var(--color-surface);
+  margin-block: var(--space-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.contact p {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-base);
+}
+
+.contact p:last-child {
+    margin-bottom: 0; /* Убираем нижний отступ у последнего параграфа */
+}
+
+
+.contact a {
+  font-weight: 600;
+  color: var(--color-accent);
+  cursor: pointer; /* Оставляем курсор-указатель для контактных ссылок */
+}
+
+.contact a:hover {
+    color: var(--color-accent-hover);
+}
+
+.contact .btn {
+  margin-top: var(--space-md);
+}
+
+
+/* ==========================================================================
+   15. DELIVERY AND PAYMENT SECTION (Новый раздел)
+   ========================================================================== */
+.delivery-payment {
+    padding-block: var(--space-xl); /* Вертикальный отступ */
+    background-color: var(--color-bg); /* Фон секции */
+}
+
+.delivery-payment .section-title {
+    /* Использует общий стиль .section-title */
+}
+
+.delivery-payment-content {
+    display: flex; /* Используем Flexbox для расположения колонок */
+    gap: var(--space-lg); /* Отступ между колонками */
+    flex-wrap: wrap; /* Перенос колонок на новую строку на маленьких экранах */
+    justify-content: center; /* Центрирование колонок */
+}
+
+.payment-info,
+.delivery-info {
+    flex: 1 1 300px; /* Гибкие элементы, минимальная ширина 300px */
+    background-color: var(--color-surface); /* Фон карточек */
+    padding: var(--space-md); /* Внутренний отступ */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: var(--border-width) solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm); /* Отступ между элементами внутри колонки */
+}
+
+.payment-info h3,
+.delivery-info h3 {
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    font-size: 1.4rem; /* Размер заголовка колонки */
+    font-weight: 600;
+    margin-bottom: var(--space-sm); /* Отступ после заголовка H3 */
+    border-bottom: 2px solid var(--color-accent); /* Акцентная линия под заголовком */
+    padding-bottom: var(--space-xs); /* Отступ между заголовком и линией */
+}
+
+.payment-info h5,
+.delivery-info h5 {
+    font-family: var(--font-heading);
+    color: var(--color-text-alt);
+    font-size: 1rem; /* Размер подзаголовка */
+    font-weight: 500;
+    margin-bottom: var(--space-xs); /* Отступ после подзаголовка H5 */
+}
+
+.payment-info ul,
+.delivery-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs); /* Отступ между пунктами списка */
+}
+
+.payment-info li,
+.delivery-info li {
+    color: var(--color-text-alt);
+    line-height: var(--line-height-base);
+    font-size: 0.95rem;
+    /* Добавляем легкую точку или иконку перед пунктом списка */
+    position: relative;
+    padding-left: var(--space-sm); /* Отступ слева для маркера */
+}
+
+.payment-info li::before,
+.delivery-info li::before {
+    content: '•'; /* Маркер списка */
+    position: absolute;
+    left: 0;
+    color: var(--color-accent); /* Цвет маркера */
+    font-weight: bold;
+}
+
+
+/* ==========================================================================
+   16. FOOTER
+   ========================================================================== */
+.site-footer {
+  background: var(--color-surface);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  color: var(--color-text-alt);
+  margin-block-start: var(--space-lg);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.site-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm); /* Отступ между блоками в подвале */
+}
+
+
+.footer-bottom {
+    width: 100%; /* Полная ширина */
+    text-align: center;
+    padding-top: var(--space-sm); /* Отступ сверху */
+    border-top: var(--border-width) solid var(--color-border); /* Граница над нижним блоком */
+}
+
+.footer-bottom p {
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+    color: var(--color-text-alt); /* Цвет ссылок в подвале */
+    text-decoration: underline; /* Подчеркивание ссылок в подвале */
+    cursor: pointer; /* Оставляем курсор-указатель для ссылок в подвале */
+}
+
+.site-footer a:hover {
+    color: var(--color-text); /* Цвет ссылок в подвале при наведении */
+}
+
+
+/* ==========================================================================
+   17. REVEAL ON SCROLL ANIMATION
+   ========================================================================== */
+/* Сохранено как есть, способствует современному виду */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   18. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Средние устройства (планшеты, менее 992px) */
+@media (max-width: 991.98px) {
+  :root {
+    --space-lg: calc(var(--space-unit) * 5); /* Скорректированный отступ */
+    --space-xl: calc(var(--space-unit) * 8); /* Скорректированный отступ */
+  }
+
+  .nav-group {
+      gap: var(--space-sm); /* Уменьшаем отступ в группе навигации */
+  }
+
+  .nav-menu {
+    gap: var(--space-md);
+  }
+
+  section {
+      padding-block: var(--space-lg); /* Скорректированный отступ секции */
+  }
+
+  .section-title {
+      margin-bottom: var(--space-md); /* Скорректированный отступ после заголовка */
+  }
+
+  /* Отступы для нового раздела на средних экранах */
+  .delivery-payment-content {
+      gap: var(--space-md); /* Уменьшаем отступ между колонками */
+  }
+
+  .payment-info,
+  .delivery-info {
+      flex: 1 1 280px; /* Чуть меньше минимальная ширина */
+  }
+
+}
+
+/* Маленькие устройства (ландшафтные телефоны, менее 768px) */
+@media (max-width: 767.98px) {
+  :root {
+    --space-md: calc(var(--space-unit) * 4); /* Увеличенный отступ для мобильных секций */
+    --space-lg: calc(var(--space-unit) * 6); /* Увеличенный отступ для мобильных секций */
+    --space-xl: calc(var(--space-unit) * 8); /* Увеличенный отступ для мобильных секций */
+  }
+
+  body {
+    font-size: 0.95rem; /* Чуть больший базовый размер шрифта для мобильных устройств */
+  }
+
+  .site-header {
+    padding-block: var(--space-xs);
+  }
+
+  .nav-toggle {
+    display: block; /* Показываем гамбургер на маленьких экранах */
+  }
+
+  /* Скрываем группу навигации на мобильных устройствах и показываем гамбургер */
+  .nav-group {
+      display: none; /* Скрыт по умолчанию, управляется JS для мобильных устройств */
+  }
+
+
+  .nav-menu {
+    display: none; /* Скрыт по умолчанию, показывается с .is-open */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-surface); /* Используем фон поверхности для мобильного меню */
+    flex-direction: column;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-md);
+    border-top: var(--border-width) solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  }
+
+  .nav-menu.is-open {
+    display: flex; /* Показываем меню, когда присутствует класс is-open */
+    max-height: 500px; /* Скорректируйте по необходимости */
+    padding: var(--space-md);
+  }
+
+  .nav-menu li {
+      width: 100%; /* Элементы списка на всю ширину */
+  }
+
+  .nav-menu a {
+    font-size: 1rem; /* Чуть больший размер шрифта для мобильных ссылок */
+    padding: var(--space-sm) 0; /* Увеличенный отступ для сенсорных целей */
+    text-align: center;
+    border-bottom: var(--border-width) solid var(--color-border);
+    color: var(--color-text); /* Используем цвет текста по умолчанию для мобильных ссылок */
+    background-color: transparent; /* Убедитесь, что нет фона на мобильных ссылках */
+    border-radius: 0; /* Убираем радиус границы на мобильных ссылках */
+  }
+   .nav-menu li:last-child a {
+      border-bottom: none;
+   }
+
+   /* Стиль для кнопок/ссылок внутри мобильного меню */
+   .nav-menu .btn-primary,
+   .nav-menu .btn-secondary-link {
+       display: flex; /* Делаем их flex-элементами */
+       width: 100%; /* Полная ширина */
+       justify-content: center; /* Центрируем текст */
+       margin-top: var(--space-sm); /* Добавляем отступ между элементами */
+       padding: var(--space-sm); /* Скорректируйте отступ */
+   }
+
+   .nav-menu .btn-secondary-link {
+       border: none; /* Убираем границу у второстепенной ссылки */
+       color: var(--color-text); /* Используем цвет текста по умолчанию */
+   }
+
+   .nav-menu .btn-secondary-link:hover {
+       color: var(--color-accent); /* Акцентный цвет при наведении */
+   }
+
+
+  .hero {
+    min-height: 60vh; /* Скорректированная минимальная высота для hero на мобильных устройствах */
+    padding-top: 80px; /* Скорректировано для меньшей шапки */
+    padding-bottom: var(--space-md);
+  }
+
+  .hero-content {
+    padding: var(--space-md);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 7vw, 3rem); /* Скорректированный размер шрифта */
+    margin-bottom: var(--space-sm); /* Уменьшенный отступ */
+  }
+
+  .hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Скорректированный размер шрифта */
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-content .btn-primary {
+      margin-top: var(--space-md); /* Скорректированный отступ кнопки */
+  }
+
+
+  .section-title {
+    font-size: clamp(2rem, 6vw, 2.5rem); /* Скорректированный размер шрифта */
+    margin-bottom: var(--space-md);
+  }
+
+  section {
+      padding-block: var(--space-lg); /* Скорректированный отступ секции */
+  }
+
+  .advantages-list,
+  .services-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr; /* Элементы в одну колонку */
+    gap: var(--space-md); /* Увеличенный отступ для вертикального расположения */
+  }
+
+  .advantages-list li,
+  .service-item,
+  .testimonial {
+      padding: var(--space-md); /* Единый отступ для мобильных элементов */
+  }
+
+  /* Специфические мобильные корректировки для элементов портфолио */
+  .portfolio-item {
+      padding: 0; /* Убираем отступ у основного элемента */
+  }
+
+  .portfolio-item h4 {
+      padding: var(--space-sm); /* Добавляем отступ обратно к заголовку */
+      border-top: var(--border-width) solid var(--color-border); /* Убедитесь, что граница видна */
+   }
+
+
+  .testimonials-carousel {
+    scroll-padding-inline: var(--space-md); /* Увеличенный отступ прокрутки */
+    gap: var(--space-md); /* Увеличенный отступ */
+  }
+  .testimonial {
+    flex-basis: 90%; /* Скорректированная ширина для отзывов */
+  }
+
+  .contact {
+    padding-block: var(--space-lg); /* Скорректированный отступ */
+    margin-block: var(--space-lg); /* Скорректированный отступ */
+  }
+
+  .contact p {
+      margin-bottom: var(--space-sm); /* Уменьшенный отступ для параграфов */
+  }
+
+  .contact .btn {
+      margin-top: var(--space-md); /* Скорректированный отступ кнопки */
+  }
+
+  /* Корректировки для нового раздела Доставка и Оплата на мобильных устройствах */
+  .delivery-payment-content {
+      flex-direction: column; /* Колонки располагаются вертикально */
+      gap: var(--space-md); /* Отступ между колонками */
+  }
+
+  .payment-info,
+  .delivery-info {
+      flex: 1 1 auto; /* Элементы занимают доступное пространство */
+      width: 100%; /* Полная ширина */
+  }
+
+
+  /* ==========================================================================
+   19. PRINT STYLES
+   ========================================================================== */
+@media print {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-text: #000000;
+    --color-text-alt: #333333;
+    --color-accent: #000000;
+    --color-border: #cccccc;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --radius-sm: 0;
+    --radius: 0;
+    --radius-lg: 0;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    background-color: transparent;
+    color: black;
+  }
+
+  .site-header,
+  .nav-toggle,
+  .btn,
+  .testimonials-carousel,
+  .contact,
+  .site-footer,
+  .modal /* Скрываем модальное окно при печати */
+  {
+    display: none !important;
+  }
+
+  section, .container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: underline;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ") ";
+    font-size: 9pt;
+    font-weight: normal;
+    color: #333;
+  }
+
+  .advantages-list, .services-grid, .portfolio-grid, .delivery-payment-content {
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    border: none;
+    display: block; /* Убедитесь, что они отображаются как блоки при печати */
+  }
+   .advantages-list li, .service-item, .portfolio-item, .payment-info, .delivery-info {
+      box-shadow: none;
+      border: 1px solid var(--color-border);
+      page-break-inside: avoid; /* Избегать разрыва страницы внутри элемента */
+      margin-bottom: var(--space-sm);
+      padding: var(--space-sm);
+      display: block; /* Убедитесь, что они отображаются как блоки при печати */
+      width: 100%; /* Полная ширина при печати */
+   }
+
+   .portfolio-item h4 {
+      position: static;
+      background: transparent;
+      color: var(--color-text);
+      text-align: left;
+      padding: var(--space-xs) 0;
+      font-size: 1rem;
+   }
+
+   img {
+      max-width: 100% !important;
+      border-radius: 0;
+      margin-bottom: var(--space-xs);
+   }
+
+   p { /* Убедитесь, что параграфы видны при печати */
+       display: block !important;
+       max-height: none !important;
+       overflow: visible !important;
+       padding: 0 !important;
+       margin-bottom: var(--space-sm);
+   }
+
+
+   h1, h2, h3, h4, h5, h6 {
+     page-break-after: avoid; /* Избегать разрыва страницы после заголовка */
+     margin-top: var(--space-md);
+     margin-bottom: var(--space-sm);
+     color: var(--color-text);
+   }
+
+   blockquote, ul, ol {
+     page-break-inside: avoid; /* Избегать разрыва страницы внутри элемента */
+     margin-bottom: var(--space-sm);
+   }
+
+   blockquote {
+     border-left: 3px solid var(--color-border);
+     padding-left: var(--space-sm);
+     margin-left: var(--space-sm);
+     font-style: normal;
+   }
+
+   .payment-info h3, .delivery-info h3 {
+       border-bottom: none; /* Убираем границу под заголовком при печати */
+       padding-bottom: 0;
+       margin-bottom: var(--space-xs);
+   }
+}
+
+
+/* ==========================================================================
+   20. MODAL (Gallery Detail View)
+   ========================================================================== */
+.modal {
+  display: none; /* Скрыт по умолчанию */
+  position: fixed; /* Остается на месте */
+  z-index: 200; /* Находится поверх */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включаем прокрутку, если необходимо */
+  background-color: rgba(0, 0, 0, 0.8); /* Черный с прозрачностью */
+  align-items: center; /* Центрируем содержимое модального окна по вертикали */
+  justify-content: center; /* Центрируем содержимое модального окна по горизонтали */
+  padding: var(--space-md); /* Добавляем отступ вокруг содержимого модального окна */
+  animation: fadeIn 0.3s ease-out; /* Анимация появления */
+}
+
+.modal.is-open {
+    display: flex; /* Показываем модальное окно, когда оно открыто */
+}
+
+.modal-content {
+  background-color: var(--color-surface); /* Белый фон для содержимого модального окна */
+  margin: auto; /* Центрируем содержимое модального окна */
+  padding: 0; /* Убираем отступ по умолчанию */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 900px; /* Максимальная ширина для содержимого модального окна */
+  width: 90%; /* Ширина по умолчанию */
+  display: flex; /* Используем flexbox для макета внутри модального окна */
+  flex-direction: column; /* Располагаем изображение и описание вертикально */
+  overflow: hidden; /* Скрываем переполнение */
+  position: relative; /* Необходимо для позиционирования кнопки закрытия */
+  animation: slideIn 0.4s ease-out; /* Анимация появления сдвигом */
+}
+
+.modal-body {
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Располагаем изображение и описание вертикально */
+    width: 100%;
+}
+
+.modal-image-container {
+    position: relative; /* Необходимо для позиционирования кнопок */
+    width: 100%; /* Контейнер занимает полную ширину */
+    /* Скорректируйте padding-bottom для контроля высоты/соотношения сторон контейнера изображения */
+    /* Для соотношения сторон 16:9 используйте 56.25% (9/16 * 100) */
+    /* Для соотношения сторон 4:3 используйте 75% (3/4 * 100) */
+    /* Для квадрата используйте 100% */
+    padding-bottom: 60%; /* Пример: Скорректируйте это значение в зависимости от желаемой высоты контейнера изображения */
+    height: 0; /* Сворачиваем высоту */
+    overflow: hidden; /* Скрываем переполнение */
+    border-radius: var(--radius) var(--radius) 0 0; /* Закругляем углы только сверху */
+    background-color: #eee; /* Добавляем легкий фон на случай, если изображение не заполнит */
+}
+
+.modal-body #modalImage {
+    position: absolute; /* Абсолютное позиционирование изображения внутри контейнера */
+    top: 0;
+    left: 0;
+    width: 100%; /* Изображение занимает полную ширину контейнера */
+    height: 100%; /* Изображение занимает полную высоту контейнера */
+    object-fit: contain; /* Убедитесь, что полное изображение видно */
+    border-radius: var(--radius) var(--radius) 0 0; /* Закругляем углы только сверху */
+}
+
+.modal-description {
+    width: 100%; /* Описание занимает полную ширину */
+    padding: var(--space-md); /* Отступ для текста описания */
+    overflow-y: auto; /* Добавляем полосу прокрутки, если контент переполняется по вертикали */
+    color: var(--color-text-alt); /* Более светлый цвет текста */
+    line-height: var(--line-height-base);
+}
+
+.modal-description h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: var(--line-height-heading);
+    border-bottom: none; /* Убираем границу у заголовка в модальном окне */
+    padding: 0; /* Убираем отступ у заголовка в модальном окне */
+    text-align: left; /* Выравниваем заголовок по левому краю в модальном окне */
+}
+
+.modal-description p {
+    margin-bottom: var(--space-sm); /* Отступ между параграфами */
+}
+
+.modal-description p:last-child {
+    margin-bottom: 0; /* Нет нижнего отступа у последнего параграфа */
+}
+
+.modal-description a {
+    font-weight: 500;
+    color: var(--color-accent);
+    cursor: pointer; /* Оставляем курсор-указатель для ссылок в описании модального окна */
+}
+
+
+/* Кнопка закрытия */
+.close-button {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  color: var(--color-text-alt); /* Более светлый цвет для кнопки закрытия */
+  font-size: 2rem; /* Больший размер */
+  font-weight: bold;
+  cursor: pointer; /* Оставляем курсор-указатель для кнопки закрытия */
+  transition: color var(--transition-duration) var(--transition-timing);
+  z-index: 210; /* Убедитесь, что находится над содержимым модального окна */
+  background: none; /* Убираем фон кнопки по умолчанию */
+  border: none; /* Убираем границу кнопки по умолчанию */
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--color-text); /* Более темный цвет при наведении/фокусе */
+  text-decoration: none;
+  outline: none;
+}
+
+/* Кнопки навигации */
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+  color: white;
+  border: none;
+  padding: var(--space-sm);
+  font-size: 2rem;
+  cursor: pointer; /* Оставляем курсор-указатель для кнопок навигации */
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s ease;
+  z-index: 205; /* Убедитесь, что находятся над изображением, но под кнопкой закрытия */
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Темнее при наведении */
+}
+
+.prev-button {
+  left: var(--space-sm);
+}
+
+.next-button {
+  right: var(--space-sm);
+}
+
+
+/* Анимации для модального окна */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal.is-closing {
+    animation: fadeOut 0.3s ease-out forwards;
+}
